@@ -3,137 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Club Danmark</title>
-  
-  <!-- FontAwesome og Bootstrap -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <title>Responsiv App</title>
+
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
+  
+  <!-- Custom CSS -->
   <style>
     body {
       background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
     }
 
     .kategori-scroll {
-      overflow-x: auto;
       display: flex;
+      justify-content: center;
+      overflow-x: auto;
       gap: 1.5rem;
-      padding: 1rem;
+      padding: 1rem 0;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
     }
-
     .kategori-item {
       flex: 0 0 auto;
       text-align: center;
-      scroll-snap-align: start;
+      scroll-snap-align: center;
+      cursor: pointer;
     }
-
-    .kategori-icon-wrapper {
-      width: 15vw;
-      height: 15vw;
-      background-color: #FFF0A6;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-
     .kategori-icon {
-      width: 50%;
-      height: 50%;
-      object-fit: contain;
-    }
-
-    .kategori-text {
-      margin-top: 0.5rem;
-      font-size: 0.8rem;
-    }
-
-    @media (max-width: 768px) {
-      .kategori-icon-wrapper {
-        width: 50px;
-        height: 50px;
-      }
-      
-      .card-body {
-        font-size: 0.9rem;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .kategori-icon-wrapper {
-        width: 64px;
-        height: 64px;
-      }
+      width: 64px;
+      height: 64px;
+      border-radius: 41px;
+      background-color: #FFF0A6;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 82%;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
-
-  <!-- Kategorier -->
+  <!-- Kategori-sektionen -->
   <section class="bg-white">
-    <div class="px-3">
-      <h5 class="fw-bold mb-3">Kategorier</h5>
+    <div class="text-center px-3">
       <div class="kategori-scroll">
         <div class="kategori-item">
-          <div class="kategori-icon-wrapper">
-            <img src="./img/oplevelse.png" alt="Oplevelse" class="kategori-icon" />
-          </div>
-          <div class="kategori-text">Oplevelse</div>
+          <div class="kategori-icon" style="background-image: url('https://s3-alpha-sig.figma.com/img/f824/27b2/6b12821887f9c05f38b11fd104e2be11?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ssC-YvLG-f0mvwXCMIL34iRh5toVhVxsEodASK06uXOi5KaaXEfXiba3L2ckBmtsV2jIAEh5Vj3j5og5lE20xrmMQ-Ckz~kqaZYtzB93A9qRW8U-VmAW8QFpUApyYRKe1-bAxxSzCU69zJwolRypkCjKrIHHJuYbNtORvGSOB~Lxh0xEVEUYNXOEqC1paWUiQtpDHMTdYN2UcvtpaaeVzuwYvyOnGtfh6pHuttn9ZvssNkVdJHfCd61Ax0TzGehsa9zKgMLYNAlxWkAeEnuifpmg~UnydPefpMf39naR~wx~y08JiEMYpcMBDS0slQFTj1XN2xwjjKyKXqRM8NxgDA__');"></div>
+          <div class="kategori-text">Oplevelse & Fritid</div>
         </div>
         <div class="kategori-item">
-          <div class="kategori-icon-wrapper">
-            <img src="./img/hjem.png" alt="Hjem" class="kategori-icon" />
-          </div>
+          <div class="kategori-icon" style="background-image: url('https://s3-alpha-sig.figma.com/img/0b5e/b7b4/6eee552a238dbf50eaa205b27063d13a?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=fOdD64wlHdISzpAFFTNJ9VW2KJBul5GItI1hUBL87Kruz7EmkwfXuYutn4BNT0ieg32R7C3QAhveMgC58GijfkNUS30IeBB3tRKUjRZ8lyihVym4jUPOPPQDyXwyTlStUjWE0T9ppsAYxhV0s9PCVcVLF96wIM68vXhx62~91kqGBf~51AgYuNlasEFSATbc7ZfjjjLW9JdImhAB6xfK3MUQ71YIsY-Un3QVKuUuc77pWuM~lBpRlVKymZWS94DnHdYXE2HSPoKoucs52AypKXKG3CEHxpRmIftREBK4sOUfOSeNu90ghHHstbIp3dxxQfgABcr7KhELYRgwNkLPYA__');"></div>
           <div class="kategori-text">Hjem & Livsstil</div>
         </div>
         <div class="kategori-item">
-          <div class="kategori-icon-wrapper">
-            <img src="./img/dyr.png" alt="Dyr" class="kategori-icon" />
-          </div>
-          <div class="kategori-text">Dyr & Kæledyr</div>
+          <div class="kategori-icon" style="background-image: url('https://s3-alpha-sig.figma.com/img/820b/30ea/eb997ecbbc6b40ed176a675f3a127410?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=j4nTPfG4XFKn-lCBRhkGVSHUYZaadnKwF69YJhDB1j6IR-C29M-hpndMO9JTu2oEQXJm0AzL1VWxrCoT4MbL8dY2NgB~~DdmGhXWcI7SHsMqYBBXJstPQfYEb-nLDtbk7DUr9Zvwi4P6nLOZLpqxdXHQZeOcUbGw2LCuXgZMEQH5~j5sc2Uc3sbs8JDoBONikbYtEG5-tnVWwyhQtS63iv9xIzml5uYBoca-fZR4~S2~HvcnLsc98FfzSJR7xT0b0EXJiTikU9ztF5iRQgEneQnljiqvUDb5LRjRzvliZaA7ixRLGbL~Y1kRzlgWiciLYr~WOo1CmEBmdporboHdVA__');"></div>
+          <div class="kategori-text">Dyr & kæledyr</div>
         </div>
         <div class="kategori-item">
-          <div class="kategori-icon-wrapper">
-            <img src="./img/familie.png" alt="Familie" class="kategori-icon" />
-          </div>
+          <div class="kategori-icon" style="background-image: url('https://s3-alpha-sig.figma.com/img/0c7a/24fc/5706284d812aad5cd3597eaf7cb10b05?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=aY61Lok1abbWLCkVHE5YnVrUHh~sGH682gDDf3VCEUAwhpWJBHU37oUoKAldFchFiPlZCeK4~PjcK7c9mMEj2I~5qAqVFNGLGAjb5dUSSFSFKhY27rfW1n7vxhGWlFaHO6BNVo7uSyxRRdEaxeV6-aVQxMUP9Pmo1FgCJ6Mkq-4BNUL1Vb-WyVrrno~amC~wlivGdlvjc1lMxEw4ul01XLfrc39RXf5~ditNdcIfbkACeYzf8ZIJPgXc12-JfkNkHgyKmVKJZ8dGSOjjWVfzf~IYqlr3xWHPcnQ9X5lH1qHCJ5WSVOP95V2kqMMicuxRaUiRobpfxkTw5BqrUAnC~w__');"></div>
           <div class="kategori-text">Familie</div>
         </div>
         <div class="kategori-item">
-          <div class="kategori-icon-wrapper">
-            <img src="./img/skønhed.png" alt="Skønhed" class="kategori-icon" />
-          </div>
-          <div class="kategori-text">Skønhed</div>
+          <div class="kategori-icon" style="background-image: url('https://s3-alpha-sig.figma.com/img/2996/cda1/f7e63b592a1a84aac243f1a339ffacf0?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=FP18CX5CqtD--LJ9wp9~YVls0PuDSrBSTpL1CtzcEgR7~QbUIj60lKp6JMjoBhXaKFitGq-QxAH32tzXWNb-W5OPL8ZrMkhToOCV1uZ6L3~UvUtVfdM7stmhWD4t5v2VXn3iENm1FrISM8XU4Rqg1HkhGqhIbX3sz6K9wuY-T6Mr6~zR6I4P02XRVHUK9uH2-qtUkykbLQ69HOgkoJyZ~WYgZLElHkuHiIW8-p3yvosNa7~U9Ggw9tPrVApuSDYb3MRbcG8zyaEvRVboDsAiJysrREUvAYtDRuOgqjzJ6Ho0sxslXgmqY9HmMYfjGreVR6i1TEHMh8qD1WZL2hJQtg__');"></div>
+          <div class="kategori-text">Skønhed/Velvære</div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Produktkort -->
-  <div class="card mt-4 shadow-sm rounded-4 border-0 overflow-hidden mx-3">
+   <!-- Produktkort -->
+   <div class="card mt-4 shadow-sm rounded-4 border-0 overflow-hidden mx-3">
     <div class="position-relative">
       <img src="https://images.giftpack.ai/product_provider_products/9b7d5db4-2393-4a8d-b784-297c390b798a/gift_images/9bc58e04-d3ef-42fd-96f3-6daae2b663f8/cover.png" class="w-100" style="height: 300px; object-fit: cover; border-radius: 1rem;" alt="Produktbillede">
+      
+      <!-- Se butik knap med pil -->
+      <a href="https://www.matas.dk" target="_blank" class="btn btn-sm btn-outline-dark position-absolute bottom-0 end-0 m-2 rounded-pill">
+        Se butik <i class="bi bi-arrow-right"></i>
+      </a>
+      
       <button class="btn btn-light position-absolute top-0 end-0 m-2 rounded-circle toggle-favorite">
         <i class="bi bi-heart fs-5"></i>
       </button>
-      <img src="https://mshorsens.dk/wp-content/uploads/2017/03/matas.png" class="position-absolute bottom-0 start-0 m-3 rounded-circle border border-white shadow" style="width: 60px; height: 60px; object-fit: cover;" alt="Matas logo" />
-      <a href="https://www.matas.dk" target="_blank" class="btn btn-sm btn-outline-dark position-absolute bottom-0 end-0 m-2 rounded-pill">Se butik</a>
+      
+      <img src="https://mshorsens.dk/wp-content/uploads/2017/03/matas.png" class="position-absolute bottom-0 start-0 m-3 rounded-circle border border-white shadow" style="width: 60px; height: 60px; object-fit: cover;" alt="Matas logo">
     </div>
     <div class="card-body">
-      <h5 class="mb-0 fw-bold">Matas, Aarhus</h5>
+      <!-- Opdel overskrift med flex: venstre for butik, højre for lokation med en linje -->
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <span class="fw-bold">Matas</span>
+        <span class="location">Aarhus</span>
+      </div>
       <p class="text-muted small mb-1">Skønhed/Velvære</p>
       <div class="d-flex align-items-center text-muted small mb-2">
         <span class="me-2"><i class="bi bi-star-fill text-warning"></i> 4.5 (459)</span>
         <span><i class="bi bi-clock"></i> Sidste frist: <strong>02.05</strong> <i class="bi bi-dot"></i> <strong>20.00</strong></span>
       </div>
+      <!-- Prisrækken: original pris til venstre, 60kr til højre -->
       <div class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-decoration-line-through text-muted">120 kr.</span>
         <span class="fs-5 text-success fw-bold">60 kr.</span>
-        <a href="#" class="btn btn-outline-primary btn-sm">Find vej</a>
       </div>
       <h6 class="fw-bold small">Produkt beskrivelse</h6>
       <p class="small text-muted">
@@ -142,47 +108,58 @@
       <button class="btn btn-dark w-100 rounded-pill mb-5">Tilføj til wallet</button>
     </div>
   </div>
-  <div style="height: 40px;"></div>
-
-  <!-- Navigation -->
-  <nav class="navbar fixed-bottom bg-white border-top shadow-sm px-3">
-    <div class="container d-flex justify-content-between align-items-center">
-      <div class="text-center flex-fill">
-        <i class="bi bi-house fs-4"></i>
-        <div class="small">Hjem</div>
-      </div>
-      <div class="text-center flex-fill">
-        <i class="bi bi-star fs-4"></i>
-        <div class="small">Mine Clubs</div>
-      </div>
-      <div class="text-center flex-fill">
-        <button class="btn btn-danger rounded-circle shadow" style="width: 60px; height: 60px; margin-bottom: -30px;">
-          <i class="bi bi-search fs-4 text-white"></i>
-        </button>
-      </div>
-      <div class="text-center flex-fill">
-        <i class="bi bi-wallet2 fs-4"></i>
-        <div class="small">Wallet</div>
-      </div>
-      <div class="text-center flex-fill">
-        <i class="bi bi-list fs-4"></i>
-        <div class="small">Menu</div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.querySelectorAll('.toggle-favorite').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const icon = btn.querySelector('i');
-        icon.classList.toggle('bi-heart');
-        icon.classList.toggle('bi-heart-fill');
-        icon.classList.toggle('text-danger');
-      });
-    });
-  </script>
 </body>
 </html>
-        
+
+ <!-- Navigation -->
+ <nav class="navbar fixed-bottom bg-white border-top shadow-sm px-3">
+  <div class="container d-flex justify-content-between align-items-center">
+    <div class="text-center flex-fill">
+      <i class="bi bi-house fs-4"></i>
+      <div class="small">Hjem</div>
+    </div>
+    <div class="text-center flex-fill">
+      <i class="bi bi-qr-code-scan fs-4"></i>
+      <div class="small">Scan</div>
+    </div>
+    <div class="text-center flex-fill">
+      <button class="btn btn-danger rounded-circle shadow" style="width: 60px; height: 60px; margin-bottom: -30px;">
+        <i class="bi bi-search fs-4 text-white"></i>
+      </button>
+    </div>
+    <div class="text-center flex-fill">
+      <i class="bi bi-wallet2 fs-4"></i>
+      <div class="small">Wallet</div>
+    </div>
+    <div class="text-center flex-fill">
+      <i class="bi bi-list fs-4"></i>
+      <div class="small">Menu</div>
+    </div>
+  </div>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<!-- JavaScript: Bootstrap og brugerdefineret script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Favorit-knap ikon skift ved klik
+  document.querySelectorAll('.toggle-favorite').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const icon = btn.querySelector('i');
+      icon.classList.toggle('bi-heart');
+      icon.classList.toggle('bi-heart-fill');
+      icon.classList.toggle('text-danger');
+    });
+  });
+  // Aktiv markering af kategori ved klik
+  document.querySelectorAll('.kategori-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.kategori-item').forEach(el => el.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <style>
+    :root {
+      --accent: #1BB0B0;
+      --background: #F9F9FB;
+      --light: #FEFEFF;
+      --dark: #1A1B2F;
+      --gray: #A4A5C8;
+      --gray-light: #BCBCBC;
+      --nav-gray: #6F6F6F;
+      --red: #FF5959;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--background);
+      display: flex;
+      justify-content: center;
+    }
+
+    .chat-container {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .statusbar {
+      text-align: center;
+      padding: 12px;
+      font-size: 17px;
+      font-weight: 590;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .back-button {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-image: url('https://placehold.co/40x40');
+      background-size: cover;
+      position: relative;
+    }
+
+    .avatar::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 10px;
+      height: 10px;
+      background: #07D623;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    .header-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-info .name {
+      font-size: 16px;
+      color: #282828;
+    }
+
+    .header-info .status {
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    .call-icon {
+      font-size: 20px;
+      color: var(--accent);
+      cursor: pointer;
+    }
+
+    .messages-wrapper {
+      flex: 1;
+      overflow-y: auto;
+      padding: 70px 16px 100px;
+    }
+
+    .messages {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-bottom: 100px;
+    }
+
+    .message {
+      max-width: 75%;
+      padding: 14px 18px;
+      font-size: 13px;
+      border-radius: 24px;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
+      word-wrap: break-word;
+    }
+
+    .message.left {
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    .message.right {
+      background: var(--accent);
+      color: white;
+      align-self: flex-end;
+    }
+
+    .timestamp {
+      font-size: 10px;
+      color: var(--gray-light);
+    }
+
+    .timestamp.right {
+      text-align: right;
+      color: var(--gray);
+    }
+
+    .input-bar {
+      position: fixed;
+      bottom: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      padding: 8px 12px;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .input-box {
+      background: #fdfdff;
+      border-radius: 52px;
+      flex: 1;
+      display: flex;
+      padding: 12px 16px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .input-text {
+      flex: 1;
+      background: transparent;
+      border: none;
+      font-size: 14px;
+      color: var(--dark);
+    }
+
+    .input-icons img {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .send-button {
+      padding:14px;
+      width: autox;
+      height: autopx;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 2px rgba(244, 241, 241, 0.08);
+    }
+
+    .send-button i {
+      font-size: 20px;
+      color: white;
+    }
+
+    .navbar {
+      background: #fff;
+      border-top: 1px solid #E3E3E4;
+      box-shadow: 0 -1px 4px rgba(253, 253, 253, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: center;
+      max-width: 400px;
+      width: 100%;
+      padding: 0 8px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .nav-item {
+      text-align: center;
+      color: var(--nav-gray);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .nav-label {
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 15.6px;
+      margin-top: 2px;
+    }
+
+    .nav-button { 
+      background: var(--red);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .nav-button i {
+      color: white;
+      line-height:0;
+    }
+
+    @media (min-width: 576px) {
+      .chat-container {
+        max-width: 100%;
+      }
+      .container {
+        max-width: 540px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .chat-container {
+        max-width: 700px;
+      }
+      .container {
+        max-width: 700px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .chat-container {
+        max-width: 900px;
+      }
+      .container {
+        max-width: 900px;
+      }
+} 
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="header">
+      <div class="header-left">
+        <div class="back-button">←</div>
+        <div class="avatar"></div>
+        <div class="header-info">
+          <div class="name">Matas</div>
+          <div class="status">Online now</div>
+        </div>
+      </div>
+      <div class="call-icon">
+        <i class="bi bi-telephone"></i>
+      </div>
+    </div>
+
+    <div class="messages-wrapper">
+      <div class="messages">
+        <div class="message left">Tak! Jeg sætter virkelig pris på, hvor hurtige og hjælpsomme I er. Det gør en stor forskel! 😊</div>
+        <div class="timestamp">12:15</div>
+        <div class="message right">Vi har modtaget din besked og vender tilbage inden for 5 minutter!</div>
+        <div class="timestamp right">12:16</div>
+        <div class="message left">Tak for svar!</div>
+      </div>
+    </div>
+
+    <div class="input-bar">
+      <div class="input-box">
+        <input class="input-text" placeholder="Skriv en besked..." />
+        <div class="input-icons">
+          <img src="picture-in-picture.png" alt="picture" />
+          <img src="file.png" alt="file" />
+        </div>
+      </div>
+      <div class="send-button">
+        <img src="send (1).png" alt="Send ikon" />
+      </div>      
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-item">
+          <i class="bi bi-house fs-4"></i>
+          <div class="nav-label">Hjem</div>
+        </div>
+        <div class="nav-item">
+          <i class="bi bi-qr-code-scan fs-4"></i>
+          <div class="nav-label">Scan</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-button">
+            <i class="bi bi-search fs-4 text white"></i>
+          </div>
+        </div>
+        <div class="nav-item">
+          <i class="bi bi-wallet2 fs-4"></i>
+          <div class="nav-label">Wallet</div>
+        </div>
+        <div class="nav-item">
+          <i class="bi bi-list fs-4"></i>
+          <div class="nav-label">Menu</div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

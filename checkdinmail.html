@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check din mail</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(180deg, #FF8383 0%, #FF2F2F 100%);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .check-mail-box {
+      background: white;
+      border-radius: 28px;
+      padding: 40px 20px;
+      width: 90%;
+      max-width: 360px;
+      text-align: center;
+      position: relative;
+    }
+
+    .check-mail-box h5 {
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .check-mail-box p {
+      font-size: 13px;
+      color: #BCBEC0;
+      margin-bottom: 1rem;
+    }
+
+    .code-inputs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .code-inputs input {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .btn-dark-gradient {
+      background: conic-gradient(from 90deg at 50% 50%, #282828 92deg, #3D3D3D 286deg);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 10px;
+      width: 100%;
+      font-weight: 700;
+    }
+
+    .resend {
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    .resend a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .resend a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="check-mail-box">
+    <h5>Check din mail</h5>
+    <p>Vi har sendt et reset link til din mail</p>
+    <p><strong>Mail@hotmail.com</strong></p>
+
+    <div class="code-inputs">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+    </div>
+
+    <button class="btn btn-dark-gradient">Verificere</button>
+
+    <div class="resend">
+      Ikke modtaget koden? <a href="#">Send email igen</a>
+    </div>
+  </div>
+</body>
+</html>
