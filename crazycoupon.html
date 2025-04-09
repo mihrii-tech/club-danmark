@@ -3,42 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Slider med Sidste Chance</title>
+  <title>ClubDanmark</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <style>
-    .slide-container {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fafafc;
+      margin: 0;
+      padding-bottom: 90px;
     }
 
-    .slide-wrapper {
+    /* PROFILSEKTION */
+    .profile-header {
       display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .slide {
-      min-width: 100%;
-      box-sizing: border-box;
+      align-items: center;
+      justify-content: space-between;
       padding: 16px;
     }
 
-    .slide-inner {
-      width: 100%;
-      height: 100%;
-      padding: 20px 8px;
-      box-shadow: 0px 0px 2.3px rgba(0, 0, 0, 0.25);
-      border-radius: 16px;
+    .profile-header .left {
       display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      gap: 36px;
+      align-items: center;
+      gap: 12px;
     }
 
-    .promo-box.sidste-chance {
+    .profile-header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .profile-header h5 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .profile-header .icons i {
+      font-size: 18px;
+      margin-left: 12px;
+    }
+
+    /* SLIDER */
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 16px;
+      padding: 0 16px;
+      margin-bottom: 8px;
+    }
+
+    .slide {
+      flex: 0 0 90%;
+      scroll-snap-align: start;
+      border-radius: 16px;
+      padding: 16px;
+      color: white;
       background: linear-gradient(180deg, #FF8383 0%, #FF2F2F 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-
     .promo-box.clubs {
       background: #1BB0B0;
     }
@@ -58,6 +85,66 @@
     .promo-box.crazy-coupons {
       background: #3C85FC;
     }
+    .slide .content {
+      width: 70%;
+    }
+
+    .slide h5 {
+      font-size: 12px;
+      font-weight: 700;
+      background: white;
+      color: #282828;
+      padding: 2px 8px;
+      display: inline-block;
+      border-radius: 16px;
+      font-size: 10px;
+    }
+
+    .slide p {
+      font-size: 13px;
+      margin: 8px 0;
+    }
+
+    .slide .btn {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 9px;
+      background: white;
+      color: #FF2F2F;
+    }
+
+    .slide img {
+      height: 86px;
+      width: auto;
+    }
+
+    .dot-nav {
+      display: flex;
+      justify-content: center;
+      margin: 6px 0 16px;
+    }
+
+    .dot-nav div {
+      width: 6px;
+      height: 6px;
+      background: #6F6F6F;
+      border-radius: 50%;
+      margin: 0 3px;
+    }
+    .dot-nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .dot-nav div {
+      width: 6px;
+      height: 6px;
+      background: #6F6F6F;
+      border-radius: 50%;
+      margin: 0 3px;
+    }
 
     .tag {
       padding: 4px 12px;
@@ -66,7 +153,7 @@
       outline: 1px solid white;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 8;
     }
 
     .tag-icon {
@@ -84,7 +171,18 @@
       outline: 1.5px #282828 solid;
       outline-offset: -0.75px;
     }
-
+    .slide .tag {
+  padding: 4px 12px;
+  background: rgba(249, 249, 251, 0.72);
+  border-radius: 16px;
+  outline: 1px solid white;
+  outline-offset: -1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  max-width: 100%;
+}
     .btn-more {
       padding: 0 4px;
       background: transparent;
@@ -99,128 +197,352 @@
       font-size: 10px;
       font-family: Poppins;
       font-weight: 700;
+      line-height: 12px;
     }
 
     .btn-more-icon {
       width: 16px;
       height: 16px;
-      background: #f9f9fb;
+      background: #dedee2;
       margin-left: 2px;
+      border-radius: 50%;
+    }
+    /* KATEGORIER */
+    .category-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 16px;
+      padding: 0 16px 16px;
     }
 
-    .slide-text {
-      color: white;
-      font-size: 13px;
-      font-family: Poppins;
-      font-weight: 400;
-      line-height: 1.2;
+    .category-item {
+      flex: 0 0 auto;
+      text-align: center;
     }
+
+    .category-item img {
+      width: 41px;
+      height: 41px;
+      background: #FFF0A6;
+      border-radius: 50%;
+      margin-bottom: 4px;
+    }
+
+    .category-item span {
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      padding: 0 16px;
+      margin-top: 16px;
+    }
+
+    /* CRAZY COUPONS */
+    .coupon-card {
+      background: white;
+      border-radius: 12px;
+      margin: 12px 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      overflow: auto;
+    }
+
+    .coupon-card img {
+      width: 100%;
+    }
+
+    .coupon-info {
+      padding: 8px;
+    }
+    .coupon-scroll::-webkit-scrollbar {
+  display: none;
+}
+.coupon-scroll {
+  -ms-overflow-style: none;  /* IE og Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+    .coupon-info .brand {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .coupon-info .meta {
+      font-size: 11px;
+      color: #535353;
+    }
+
+    .coupon-info .discount {
+      color: #07D623;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* DEALS */
+    .deal-row {
+      display: flex;
+      overflow-x: auto;
+      gap: 12px;
+      padding: 12px 16px;
+    }
+
+    .deal-card {
+      flex: 0 0 auto;
+      width: 140px;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .deal-card img {
+      width: 100%;
+    }
+
+    .deal-card p {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 8px 8px;
+      margin: 0;
+    }
+
+.nav-item {
+  text-align: center;
+  color: var(--nav-gray);
+  font-family: 'Poppins', sans-serif;
+}
+
+.nav-label {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15.6px;
+  margin-top: 2px;
+}
+
+.nav-button { 
+  background: #ff5959;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.nav-button i {
+  color: rgb(249, 249, 249);
+  line-height:0;
   </style>
 </head>
 <body>
 
-<div class="container mt-4">
-  <div class="slide-container">
-    <div class="slide-wrapper" id="slider">
-      
-      <!-- Slide 1: Sidste chance -->
-      <div class="slide">
-        <div class="slide-inner promo-box sidste-chance">
-          <div class="d-flex">
-            <div class="d-flex flex-column gap-3" style="width: 208px;">
-              <div class="tag"><div class="tag-icon"><div></div></div><div style="color: #282828; font-size: 10px; font-weight: 700;">Sidste chance</div></div>
-              <div class="slide-text">Se dagens sidste chancer,<br/>det kunne være noget for dig</div>
-              <div class="btn-more"><span>Se mere</span><div class="btn-more-icon"></div></div>
-            </div>
-            <img src="https://placehold.co/74x86" alt="Produkt" style="width: 74px; height: 86px;" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 2: Clubs -->
-      <div class="slide">
-        <div class="slide-inner promo-box clubs">
-          <div class="d-flex">
-            <div class="d-flex flex-column gap-3" style="width: 208px;">
-              <div class="tag"><div class="tag-icon"><div></div></div><div style="color: #282828; font-size: 10px; font-weight: 700;">Clubs</div></div>
-              <div class="slide-text">Bliv medlem af klubber<br/>og få unikke rabatter</div>
-              <div class="btn-more"><span>Se mere</span><div class="btn-more-icon"></div></div>
-            </div>
-            <img src="https://placehold.co/74x86" alt="Clubs" style="width: 74px; height: 86px;" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 3: Stempelkort -->
-      <div class="slide">
-        <div class="slide-inner promo-box stemplekort">
-          <div class="d-flex">
-            <div class="d-flex flex-column gap-3" style="width: 208px;">
-              <div class="tag"><div class="tag-icon"><div></div></div><div style="color: #282828; font-size: 10px; font-weight: 700;">Stempelkort</div></div>
-              <div class="slide-text">Tjen stempler og få<br/>belønninger ved køb</div>
-              <div class="btn-more"><span>Se mere</span><div class="btn-more-icon"></div></div>
-            </div>
-            <img src="https://placehold.co/74x86" alt="Stempelkort" style="width: 74px; height: 86px;" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 4: Samlemærker -->
-      <div class="slide">
-        <div class="slide-inner promo-box samlemaerker">
-          <div class="d-flex">
-            <div class="d-flex flex-column gap-3" style="width: 208px;">
-              <div class="tag"><div class="tag-icon"><div></div></div><div style="color: #282828; font-size: 10px; font-weight: 700;">Samlemærker</div></div>
-              <div class="slide-text">Saml mærker og få<br/>store rabatter</div>
-              <div class="btn-more"><span>Se mere</span><div class="btn-more-icon"></div></div>
-            </div>
-            <img src="https://placehold.co/74x86" alt="Samlemærker" style="width: 74px; height: 86px;" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 5: Deals -->
-      <div class="slide">
-        <div class="slide-inner promo-box deals">
-          <div class="d-flex">
-            <div class="d-flex flex-column gap-3" style="width: 208px;">
-              <div class="tag"><div class="tag-icon"><div></div></div><div style="color: #282828; font-size: 10px; font-weight: 700;">Deals</div></div>
-              <div class="slide-text">Eksklusive deals kun<br/>til dig lige nu</div>
-              <div class="btn-more"><span>Se mere</span><div class="btn-more-icon"></div></div>
-            </div>
-            <img src="https://placehold.co/74x86" alt="Deals" style="width: 74px; height: 86px;" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 6: Crazy Coupons -->
-      <div class="slide">
-        <div class="slide-inner promo-box crazy-coupons">
-          <div class="d-flex">
-            <div class="d-flex flex-column gap-3" style="width: 208px;">
-              <div class="tag"><div class="tag-icon"><div></div></div><div style="color: #282828; font-size: 10px; font-weight: 700;">Crazy Coupons</div></div>
-              <div class="slide-text">Få de vildeste rabatter<br/>med vores kuponer</div>
-              <div class="btn-more"><span>Se mere</span><div class="btn-more-icon"></div></div>
-            </div>
-            <img src="https://placehold.co/74x86" alt="Crazy Coupons" style="width: 74px; height: 86px;" />
-          </div>
-        </div>
-      </div>
-
-    </div>
+<!-- PROFILSEKTION -->
+<div class="profile-header">
+  <div class="left">
+    <img src="https://placehold.co/40x40" alt="Profil">
+    <h5>Hej, Henrik</h5>
+  </div>
+  <div class="icons">
+    <i class="bi bi-bell"></i>
+    <i class="bi bi-heart"></i>
   </div>
 </div>
 
-<script>
-  let index = 0;
-  const slider = document.getElementById('slider');
-  const totalSlides = slider.children.length;
+<!-- SLIDER -->
+<div class="slider" id="slider">
+  <div class="slide promo-box sidste-chance">
+    <div class="d-flex">
+      <div class="d-flex flex-column gap-3" style="width: 208px;">
+        <div class="tag"><div class="tag-icon"><div></div></div><div style="color: #282828; font-size: 10px; font-weight: 700;">Sidste chance</div></div>
+        <div class="slide-text">Se dagens sidste chancer,<br/>det kunne være noget for dig</div>
+        <div class="btn-more"><span>Se mere</span><div class="btn-more-icon"></div></div>
+      </div>
+      <img src="https://placehold.co/74x86" alt="Produkt" style="width: 74px; height: 86px;" />
+    </div>
+  </div>
 
+  <div class="slide promo-box clubs">
+    <div class="d-flex">
+      <div class="d-flex flex-column gap-3" style="width: 208px;">
+        <div class="tag"><div class="tag-icon"><div></div></div><div style="color: #282828; font-size: 10px; font-weight: 700;">Clubs</div></div>
+        <div class="slide-text">Bliv medlem af klubber<br/>og få unikke rabatter</div>
+        <div class="btn-more"><span>Se mere</span><div class="btn-more-icon"></div></div>
+      </div>
+      <img src="https://placehold.co/74x86" alt="Clubs" style="width: 74px; height: 86px;" />
+    </div>
+  </div>
+
+  <div class="slide promo-box stemplekort">
+    <div class="d-flex">
+      <div class="d-flex flex-column gap-3" style="width: 208px;">
+        <div class="tag"><div class="tag-icon"><div></div></div><div style="color: #282828; font-size: 10px; font-weight: 700;">Stempelkort</div></div>
+        <div class="slide-text">Tjen stempler og få<br/>belønninger ved køb</div>
+        <div class="btn-more"><span>Se mere</span><div class="btn-more-icon"></div></div>
+      </div>
+      <img src="https://placehold.co/74x86" alt="Stempelkort" style="width: 74px; height: 86px;" />
+    </div>
+  </div>
+
+  <div class="slide promo-box samlemaerker">
+    <div class="d-flex">
+      <div class="d-flex flex-column gap-3" style="width: 208px;">
+        <div class="tag"><div class="tag-icon"><div></div></div><div style="color: #282828; font-size: 10px; font-weight: 700;">Samlemærker</div></div>
+        <div class="slide-text">Saml mærker og få<br/>store rabatter</div>
+        <div class="btn-more"><span>Se mere</span><div class="btn-more-icon"></div></div>
+      </div>
+      <img src="https://placehold.co/74x86" alt="Samlemærker" style="width: 74px; height: 86px;" />
+    </div>
+  </div>
+
+  <div class="slide promo-box deals">
+    <div class="d-flex">
+      <div class="d-flex flex-column gap-3" style="width: 208px;">
+        <div class="tag"><div class="tag-icon"><div></div></div><div style="color: #282828; font-size: 10px; font-weight: 700;">Deals</div></div>
+        <div class="slide-text">Eksklusive deals kun<br/>til dig lige nu</div>
+        <div class="btn-more"><span>Se mere</span><div class="btn-more-icon"></div></div>
+      </div>
+      <img src="https://placehold.co/74x86" alt="Deals" style="width: 74px; height: 86px;" />
+    </div>
+  </div>
+
+  <div class="slide promo-box crazy-coupons">
+    <div class="d-flex">
+      <div class="d-flex flex-column gap-3" style="width: 208px;">
+        <div class="tag"><div class="tag-icon"><div></div></div><div style="color: #282828; font-size: 10px; font-weight: 700;">Crazy Coupons</div></div>
+        <div class="slide-text">Få de vildeste rabatter<br/>med vores kuponer</div>
+        <div class="btn-more"><span>Se mere</span><div class="btn-more-icon"></div></div>
+      </div>
+      <img src="https://placehold.co/74x86" alt="Crazy Coupons" style="width: 74px; height: 86px;" />
+    </div>
+  </div>
+</div>
+<!-- DOTS -->
+<div class="dot-nav">
+  <div></div>
+  <div></div>
+</div>
+
+<!-- KATEGORIER -->
+<div class="section-title">Kategorier</div>
+<div class="category-scroll">
+  <div class="category-item">
+    <img src="https://placehold.co/41x41" alt="Oplevelse">
+    <span>Oplevelse & Fritid</span>
+  </div>
+  <div class="category-item">
+    <img src="https://placehold.co/41x41" alt="Hjem">
+    <span>Hjem og livsstil</span>
+  </div>
+  <div class="category-item">
+    <img src="https://placehold.co/41x41" alt="Familie">
+    <span>Familie</span>
+  </div>
+  <div class="category-item">
+    <img src="https://placehold.co/41x41" alt="Skønhed">
+    <span>Skønhed</span>
+  </div>
+</div>
+
+<!-- CRAZY COUPONS -->
+<div class="section-title">Crazy Coupons</div>
+<div class="coupon-scroll d-flex overflow-auto px-3 gap-3">
+
+  <!-- Coupon Card 1 -->
+  <div class="crazy-coupon-card position-relative" style="min-width: 331px;">
+    <img src="https://placehold.co/331x135" class="w-100" style="height: 135px; object-fit: cover; border-radius: 12px;" alt="Coupon" />
+
+    <!-- Øverste badge og ikon -->
+    <div class="position-absolute top-0 w-100 d-flex justify-content-between align-items-center px-2 pt-2">
+      <div class="badge bg-white bg-opacity-75 text-dark fw-bold px-2 py-1 rounded-pill shadow-sm" style="font-size: 10px;">5+ tilbage</div>
+      <div class="d-flex align-items-center justify-content-center rounded-circle" style="width: 18px; height: 18px; background: #FEFEFF;">
+        <div style="width: 12px; height: 10px; background: conic-gradient(from 180deg at 50% 50%, #282828 0deg, #504B4B 171deg, #282828 360deg);"></div>
+      </div>
+    </div>
+
+    <!-- Info-bund -->
+    <div class="bg-white p-2 d-flex flex-column gap-1" style="border-radius: 0 0 12px 12px;">
+      <div class="fw-bold text-dark" style="font-size: 10px;">Nike Sko v 32 Air - Aarhus N</div>
+      <div class="d-flex justify-content-between align-items-center flex-wrap" style="font-size: 10px;">
+        <div class="d-flex align-items-center gap-1">
+          <i class="bi bi-geo-alt-fill" style="font-size: 12px;"></i>
+          <span class="fw-bold">Kbg</span>
+        </div>
+        <div class="d-flex align-items-center gap-1 text-secondary">
+          <i class="bi bi-shop" style="font-size: 12px;"></i>
+          <span>Adidas</span>
+        </div>
+        <div class="d-flex align-items-center gap-1 text-secondary">
+          <i class="bi bi-clock" style="font-size: 12px;"></i>
+          <span>04.04: 20.00</span>
+        </div>
+        <div class="d-flex align-items-center gap-1">
+          <i class="bi bi-ticket-perforated" style="font-size: 12px; color: #07D623;"></i>
+          <span class="text-success fw-bold" style="font-size: 13px;">40%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- POPULÆRE DEALS -->
+<div class="section-title">Populære deals</div>
+<div class="deal-row">
+  <div class="deal-card">
+    <img src="https://placehold.co/140x100" alt="Nature sæbe">
+    <p>Nature sæbe</p>
+  </div>
+  <div class="deal-card">
+    <img src="https://placehold.co/140x100" alt="T-shirts">
+    <p>T-shirts</p>
+  </div>
+</div>
+
+<!-- BUNDNAVIGATION -->
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-item">
+      <i class="bi bi-house fs-4"></i>
+      <div class="nav-label">Hjem</div>
+    </div>
+    <div class="nav-item">
+      <i class="bi bi-qr-code-scan fs-4"></i>
+      <div class="nav-label">Scan</div>
+    </div>
+    <div class="nav-item">
+      <div class="nav-button">
+        <i class="bi bi-search fs-4 text white"></i>
+      </div>
+    </div>
+    <div class="nav-item">
+      <i class="bi bi-wallet2 fs-4"></i>
+      <div class="nav-label">Wallet</div>
+    </div>
+    <div class="nav-item">
+      <i class="bi bi-list fs-4"></i>
+      <div class="nav-label">Menu</div>
+  </div>
+
+<!-- AUTO SLIDE -->
+<script>
+  const slider = document.getElementById('slider');
+  let index = 0;
   setInterval(() => {
-    index = (index + 1) % totalSlides;
-    slider.style.transform = `translateX(-${index * 100}%)`;
+    index = (index + 1) % slider.children.length;
+    slider.scrollTo({
+      left: slider.children[index].offsetLeft,
+      behavior: 'smooth'
+    });
   }, 3000);
 </script>
-
 </body>
 </html>

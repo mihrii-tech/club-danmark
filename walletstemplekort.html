@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wallet Stempelkort</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 20px 20px 100px;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9fb;
+    }
+    .location-bar {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;           
+  padding: 10px 20px;
+}
+  .location-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: right; 
+
+    }
+    .category-slider {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 10px;
+    }
+
+    .category-slider .item {
+      display: inline-block;
+      width: 75px;
+      text-align: center;
+      margin-right: 8px;
+    }
+
+    .category-slider img {
+      width: 41px;
+      height: 41px;
+      border-radius: 9999px;
+      background: #FFF0A6;
+    }
+
+    .category-slider .item span {
+      display: block;
+      font-size: 8px;
+      font-weight: 700;
+      line-height: 9.6px;
+      color: black;
+      margin-top: 8px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+      margin-bottom: 16px;
+      background: #FEFEFF;
+      border-radius: 12px;
+      padding: 12px 20px;
+      box-shadow: 0 2px 2px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .tabs div {
+      font-size: 10px;
+      font-weight: 400;
+      color: #6F6F6F;
+    }
+
+    .tabs .active {
+      font-weight: 700;
+      color: #282828;
+    }
+
+    .tabs::after {
+      content: '';
+      position: absolute;
+      bottom: 12px;
+      left: 38px;
+      width: 20px;
+      height: 2px;
+      background: linear-gradient(180deg, #FF8383 0%, #FF2F2F 100%);
+      border-radius: 2px;
+    }
+
+    .stamp-card {
+      background: linear-gradient(180deg, #9747FF 0%, #4F378A 100%);
+      padding: 20px;
+      border-radius: 24px;
+      max-width: 400px;
+      margin: 0 auto;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: 0 4px 12px rgba(174, 176, 191, 0.4);
+    }
+    <!-- Sektion-tabs under stempelkort -->
+<div style="display: flex; justify-content: space-around; align-items: center; padding: 8px 12px; background: #FEFEFF; border-radius: 12px; box-shadow: 0px 2px 2px rgba(0,0,0,0.08); margin-bottom: 16px;">
+  <div style="font-size: 10px; color: #6F6F6F;">Deals</div>
+  <div style="font-size: 10px; color: #6F6F6F;">Samlemærker</div>
+  <div style="font-size: 10px; color: #282828; font-weight: 700;">Stempelkort</div>
+  <div style="font-size: 10px; color: #6F6F6F;">Crazy Coupons</div>
+</div>
+
+    .stamp-header {
+      text-align: center;
+      font-weight: 700;
+      background: rgba(249, 249, 251, 0.72);
+      padding: 4px 12px;
+      border-radius: 16px;
+      color: #282828;
+      font-size: 10px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stamp-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      justify-items: center;
+    }
+
+    .stamp {
+      width: 36px;
+      height: 36px;
+      background: #FEFEFF;
+      border-radius: 8px;
+    }
+
+    .reward-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 12px;
+      color: #fff;
+    }
+
+    .reward-info .text {
+      font-size: 10px;
+    }
+
+    .reward-info .valid {
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .redeem-btn {
+      background: rgba(249, 249, 251, 0.76);
+      padding: 4px 8px;
+      border-radius: 24px;
+      font-size: 8px;
+      font-weight: 700;
+      color: #282828;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 72px;
+      border-top: 1px solid #ccc;
+      z-index: 999;
+    }
+
+    .bottom-nav .item {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 400;
+      color: #6F6F6F;
+    }
+
+    .bottom-nav .item.wallet {
+      color: #282828;
+      font-weight: 700;
+    }
+
+    .bottom-nav .center-btn {
+      background: #ff5959;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      position: relative;
+      top: -5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .bottom-nav .center-btn i {
+      color: white;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+   <div class="location-bar">
+        <div class="back-btn">⟵</div>
+        <div class="location-info">
+          <div class="icon"></div>
+          <div class="text">Aarhus N, Strandvangsvej</div>
+        </div>
+      </div>
+       
+    
+  <!-- Kategori sektion -->
+  <div>
+    <div style="font-size: 13px; font-weight: 700; color: black;">kategorier</div>
+    <div class="category-slider mt-2">
+      <div class="item"><img src="https://placehold.co/41x41"><span>Oplevelse & Fritid</span></div>
+      <div class="item"><img src="https://placehold.co/41x41"><span>Hjem og livstil</span></div>
+      <div class="item"><img src="https://placehold.co/41x41"><span>Dyr & kæledyr</span></div>
+      <div class="item"><img src="https://placehold.co/41x41"><span>Familie</span></div>
+      <div class="item"><img src="https://placehold.co/41x41"><span>Skønhed/Velvære</span></div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="active">Uløber snart</div>
+    <div>Udløbet</div>
+    <div>Brugt</div>
+  </div>
+
+  <!-- Stempelkort -->
+  <div class="stamp-card">
+    <div class="stamp-header">
+      <img src="https://placehold.co/18x18" width="18" height="18" />
+      Guldbageren
+    </div>
+
+    <div class="stamp-grid">
+   <!-- 6 x 7 = 42 mærker -->
+      <!-- Du kan tilføje en grøn tjekmark eller tal her hvis nødvendigt -->
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+    </div>
+
+    <div class="reward-info mt-3">
+      <div class="text">
+        10 mærker for en gratis sandwich<br>
+        <span class="valid"><i class="bi bi-clock"></i> Gyldig : 05.11.2025</span>
+      </div>
+      <button class="redeem-btn">
+        Indløs <i class="bi bi-arrow-right-circle-fill"></i>
+      </button>
+    </div>
+  </div>
+<!-- Grøn brandingsektion -->
+<div style="margin-top: 20px; background: #18CC00; padding: 12px; border-radius: 12px; text-align: center; color: #FEFEFF; font-size: 12px; font-weight: 700;">
+    <img src="https://placehold.co/18x18" width="18" height="18" style="vertical-align: middle; margin-right: 8px;" />
+    Guldbageren
+  </div>
+  
+  <!-- Bundnavigation med ikoner -->
+<div class="bottom-nav">
+    <div class="item">
+      <i class="bi bi-house-door"></i><br>
+      Hjem
+    </div>
+    <div class="item">
+      <i class="bi bi-qr-code-scan"></i><br>
+      Scan
+    </div>
+    <div class="center-btn">
+      <i class="bi bi-search"></i>
+    </div>
+    <div class="item wallet">
+      <i class="bi bi-wallet2"></i><br>
+      Wallet
+    </div>
+    <div class="item">
+      <i class="bi bi-list"></i><br>
+      Menu
+    </div>
+  </div>
+</body>
+</html>
