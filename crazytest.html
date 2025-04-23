@@ -63,18 +63,17 @@
       color: white;
     }
     .tag {
-      padding: 4px 12px;
-      background: rgba(249, 249, 251, 0.72);
-      border-radius: 16px;
-      outline: 1px solid white;
-      outline-offset: -1px;
-      font-size: 10px;
-      font-weight: 700;
-      color: #282828;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
+  padding: 4px 12px;
+  background: rgba(249, 249, 251, 0.72);
+  border-radius: 16px;
+  border: 1px solid #fff;
+  font-size: 10px;
+  font-weight: 700;
+  color: #282828;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
     .slide p {
       font-size: 13px;
       line-height: 15.6px;
@@ -86,7 +85,27 @@
       background: transparent;
       border-radius: 9px;
       border: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
+    .slide button i {
+      font-size: 12px;
+    }
+
+    .slide img.custom-icon {
+      width: 74px;
+      height: 86px;
+    }
+    .category-icon {
+      width: 41px;
+      height: 41px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 5px;
+    } 
   </style>
 </head>
 <body>
@@ -104,54 +123,104 @@
   </div>
 
 <!-- SLIDER -->
-<div class="slider" id="slider">
-    <div class="slide" style="background: linear-gradient(180deg, #FF8383 0%, #FF2F2F 100%)">
-      <div class="d-flex flex-column gap-3" style="width: 208px;">
-        <div class="tag"><div style="width: 10px; height: 10px; border: 1.5px solid #282828; border-radius: 50%;"></div>Sidste chance</div>
-        <p>Se dagens sidste chancer,<br/>det kunne være noget for dig</p>
-        <button>Se mere</button>
+<div class="slider d-flex overflow-auto px-3 gap-3 pb-3" style="scroll-snap-type: x mandatory;">
+
+    <!-- Slide 1: Sidste chance -->
+    <div class="slide d-flex align-items-center p-3" style="min-width: 90%; background: linear-gradient(180deg, #FF8383 0%, #FF2F2F 100%); border-radius: 16px; box-shadow: 0 0 2.3px rgba(0, 0, 0, 0.25);">
+      <div class="d-flex flex-column justify-content-start align-items-start gap-3 me-3" style="width: 208px;">
+        <div class="d-flex align-items-center gap-2 px-3 py-1" style="background: rgba(249, 249, 251, 0.72); border-radius: 16px; outline: 1px solid white; outline-offset: -1px; box-shadow: 0 2px 2px rgba(0,0,0,0.12);">
+          <div style="width: 18px; height: 18px; position: relative;">
+            <div style="width: 10.88px; height: 10.88px; position: absolute; left: 3.56px; top: 3.56px; outline: 1.5px solid #282828; outline-offset: -0.75px; border-radius: 50%;"></div>
+          </div>
+          <span style="font-size: 10px; font-weight: 700; color: #282828;">Sidste chance</span>
+        </div>
+        <p class="text-white m-0" style="font-size: 13px; line-height: 15.6px;">Se dagens sidste chancer,<br>det kunne være noget for dig</p>
+        <button class="d-flex align-items-center gap-2 px-2" style="font-size: 10px; font-weight: 700; color: #F9F9FB; background: transparent; border: none;">
+          <span>Se mere</span>
+          <i class="bi bi-arrow-right-circle-fill" style="font-size: 14px;"></i>
+        </button>
       </div>
-      <img src="https://placehold.co/74x86" alt="Produkt" />
+      <img src="https://s3-alpha-sig.figma.com/img/10fe/5c4d/0eddad244dd18651792712ef98a714ae?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=o7bWhc6jM6iqKhAnpuOHFMNTfp3Vkcaw2BxgaRnyCcZ51I9VNb5kH7FNOR-wH8MOj6DDmHNKzgdt3dbKsOuom0zT2mOOY2NZ7W5oFyxsPeZCLw4nHU3~EDOyOUdGMZj945PjAzMDlSH3RGCym024i713-KDcElZhihbnJb4OlrS1iyeagTXaVCj7aFAvxtRxoybcDX9VDTWpub4A7mzw3LPK0e-e37w0lvuLME2jUoIr5SYnenjxYa6QPmthzljP-z3u-CvDoy~6VsT11goC0gd9rZ80GqiJ7SJ-N4vDkQxoQ8Rsz1xUJE-dmCg4D7MZFW9qK~zKcXjYtXRNC-NRMw__" alt="Produkt" class="custom-icon" />
     </div>
-    <div class="slide" style="background: #1BB0B0">
-      <div class="d-flex flex-column gap-3" style="width: 208px;">
-        <div class="tag"><div style="width: 10px; height: 10px; border: 1.5px solid #282828; border-radius: 50%;"></div>Clubs</div>
-        <p>Se dagens sidste chancer,<br/>det kunne være noget for dig</p>
-        <button>Se mere</button>
-      </div>
-      <img src="https://placehold.co/74x86" alt="Clubs" />
+    <div class="slide d-flex align-items-center p-3" style="min-width: 90%; background: #1BB0B0; border-radius: 16px; box-shadow: 0 0 2.3px rgba(0, 0, 0, 0.25);">
+        <div class="d-flex flex-column justify-content-start align-items-start gap-3 me-3" style="width: 208px;">
+          <div class="d-flex align-items-center gap-2 px-3 py-1" style="background: rgba(249, 249, 251, 0.72); border-radius: 16px; outline: 1px solid white; outline-offset: -1px; box-shadow: 0 2px 2px rgba(0,0,0,0.12);">
+            <div style="width: 18px; height: 18px; position: relative;">
+              <div style="width: 10.88px; height: 10.88px; position: absolute; left: 3.56px; top: 3.56px; outline: 1.5px solid #282828; outline-offset: -0.75px; border-radius: 50%;"></div>
+            </div>
+            <span style="font-size: 10px; font-weight: 700; color: #282828;">Clubs</span>
+          </div>
+          <p class="text-white m-0" style="font-size: 13px; line-height: 15.6px;">Se dagens sidste chancer,<br>det kunne være noget for dig</p>
+          <button class="d-flex align-items-center gap-2 px-2" style="font-size: 10px; font-weight: 700; color: #F9F9FB; background: transparent; border: none;">
+            <span>Se mere</span>
+            <i class="bi bi-arrow-right-circle-fill" style="font-size: 14px;"></i>
+          </button>
+        </div>
+      <img src="https://s3-alpha-sig.figma.com/img/6907/7ae9/e376b884d519e962c4976f8b5aa84c81?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=FwBS6D9exnASXFKH9l~LgFP6PHELN7lYg843Z-iudZot385lkc-HCGWVQ4Q44EZUF4uR05~Io4MlfJpmraF52K3nQIzXHrh7cr2S-FDoMZfOvJGKMADBaAMVOg6lmJHiRoPayh7EHhnf-RE1qEWVgd8CysYsbwjD50QLicAV6sdoXpHYJnepjJHYuXu414UuTK9UMVz3fkHd-vDZbpH-YbI0h4Bv3sabtbagiFF6oKDJ6~IGqI7asY7zL8k5V08gRZBZcomr2naeQnf2nVWMqcZ69F4F1NLQEmINkwTETa5yqw7DaZgfnLw9Xie0Lzgd68t3griZY6YKhghybAJ1xg__" alt="Clubs"class="custom-icon" />
     </div>
-    <div class="slide" style="background: #724FE4">
-      <div class="d-flex flex-column gap-3" style="width: 208px;">
-        <div class="tag"><div style="width: 10px; height: 10px; border: 1.5px solid #282828; border-radius: 50%;"></div>Stempelkort</div>
-        <p>Se dagens sidste chancer,<br/>det kunne være noget for dig</p>
-        <button>Se mere</button>
+    <div class="slide d-flex align-items-center p-3" style="min-width: 90%; background: #724FE4; border-radius: 16px; box-shadow: 0 0 2.3px rgba(0, 0, 0, 0.25);">
+        <div class="d-flex flex-column justify-content-start align-items-start gap-3 me-3" style="width: 208px;">
+          <div class="d-flex align-items-center gap-2 px-3 py-1" style="background: rgba(249, 249, 251, 0.72); border-radius: 16px; outline: 1px solid white; outline-offset: -1px; box-shadow: 0 2px 2px rgba(0,0,0,0.12);">
+            <div style="width: 18px; height: 18px; position: relative;">
+              <div style="width: 10.88px; height: 10.88px; position: absolute; left: 3.56px; top: 3.56px; outline: 1.5px solid #282828; outline-offset: -0.75px; border-radius: 50%;"></div>
+            </div>
+            <span style="font-size: 10px; font-weight: 700; color: #282828;">Stempelkort</span>
+          </div>
+          <p class="text-white m-0" style="font-size: 13px; line-height: 15.6px;">Se dagens sidste chancer,<br>det kunne være noget for dig</p>
+          <button class="d-flex align-items-center gap-2 px-2" style="font-size: 10px; font-weight: 700; color: #F9F9FB; background: transparent; border: none;">
+            <span>Se mere</span>
+            <i class="bi bi-arrow-right-circle-fill" style="font-size: 14px;"></i>
+          </button>
       </div>
-      <img src="https://placehold.co/74x86" alt="Stempelkort" />
+      <img src="https://s3-alpha-sig.figma.com/img/9265/bbed/4f8a84f1f6857aa1656147877d90af6b?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=K6ATDDcc1yV23E2MOLrgqDqad~yyxow-nhsbfeMqlOavQTjETVbmGU-hMpwHT09yp-Zxyp3qvWXrETgpyaMXMOoehKT65eUucwPGBIP61Yvi0Ji82BM5JCd6BDMSom6G9QUZAdk8Df-UHez6vU~XlaR6CvDk-m9N9QsRH5tTPYEUplVFBS2eSyoDqVWL1xtqzu73JzcnR-Q05vg-YL9SaDBYTwoePrFfGa4zDdT2rh8dkE3bhusEAgiayWdqQj8dFTOyOe9FJFAGqAqvOP3ipDgNgqcRC0dqSO1VxouMoVdmgjJXuNVr9E4if6zQdcooIWbxSnHVI94V1rOcN27Ahg__"  alt="Stempelkort" class="custom-icon"  />
     </div>
-    <div class="slide" style="background: #FFB75F">
-      <div class="d-flex flex-column gap-3" style="width: 208px;">
-        <div class="tag"><div style="width: 10px; height: 10px; border: 1.5px solid #282828; border-radius: 50%;"></div>Samlemærker</div>
-        <p>Se dagens sidste chancer,<br/>det kunne være noget for dig</p>
-        <button>Se mere</button>
+    <div class="slide d-flex align-items-center p-3" style="min-width: 90%; background: #FFB75F; border-radius: 16px; box-shadow: 0 0 2.3px rgba(0, 0, 0, 0.25);">
+        <div class="d-flex flex-column justify-content-start align-items-start gap-3 me-3" style="width: 208px;">
+          <div class="d-flex align-items-center gap-2 px-3 py-1" style="background: rgba(249, 249, 251, 0.72); border-radius: 16px; outline: 1px solid white; outline-offset: -1px; box-shadow: 0 2px 2px rgba(0,0,0,0.12);">
+            <div style="width: 18px; height: 18px; position: relative;">
+              <div style="width: 10.88px; height: 10.88px; position: absolute; left: 3.56px; top: 3.56px; outline: 1.5px solid #282828; outline-offset: -0.75px; border-radius: 50%;"></div>
+            </div>
+            <span style="font-size: 10px; font-weight: 700; color: #282828;">Samlemærker</span>
+          </div>
+          <p class="text-white m-0" style="font-size: 13px; line-height: 15.6px;">Se dagens sidste chancer,<br>det kunne være noget for dig</p>
+          <button class="d-flex align-items-center gap-2 px-2" style="font-size: 10px; font-weight: 700; color: #F9F9FB; background: transparent; border: none;">
+            <span>Se mere</span>
+            <i class="bi bi-arrow-right-circle-fill" style="font-size: 14px;"></i>
+          </button>
       </div>
-      <img src="https://placehold.co/74x86" alt="Samlemærker" />
+      <img src="https://s3-alpha-sig.figma.com/img/9265/bbed/4f8a84f1f6857aa1656147877d90af6b?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=K6ATDDcc1yV23E2MOLrgqDqad~yyxow-nhsbfeMqlOavQTjETVbmGU-hMpwHT09yp-Zxyp3qvWXrETgpyaMXMOoehKT65eUucwPGBIP61Yvi0Ji82BM5JCd6BDMSom6G9QUZAdk8Df-UHez6vU~XlaR6CvDk-m9N9QsRH5tTPYEUplVFBS2eSyoDqVWL1xtqzu73JzcnR-Q05vg-YL9SaDBYTwoePrFfGa4zDdT2rh8dkE3bhusEAgiayWdqQj8dFTOyOe9FJFAGqAqvOP3ipDgNgqcRC0dqSO1VxouMoVdmgjJXuNVr9E4if6zQdcooIWbxSnHVI94V1rOcN27Ahg__" alt="Samlemærker" class="custom-icon"/>
     </div>
-    <div class="slide" style="background: #D03A8A">
-      <div class="d-flex flex-column gap-3" style="width: 208px;">
-        <div class="tag"><div style="width: 10px; height: 10px; border: 1.5px solid #282828; border-radius: 50%;"></div>Deals</div>
-        <p>Se dagens sidste chancer,<br/>det kunne være noget for dig</p>
-        <button>Se mere</button>
-      </div>
-      <img src="https://placehold.co/74x86" alt="Deals" />
+    <div class="slide d-flex align-items-center p-3" style="min-width: 90%; background: #D03A8A; border-radius: 16px; box-shadow: 0 0 2.3px rgba(0, 0, 0, 0.25);">
+        <div class="d-flex flex-column justify-content-start align-items-start gap-3 me-3" style="width: 208px;">
+          <div class="d-flex align-items-center gap-2 px-3 py-1" style="background: rgba(249, 249, 251, 0.72); border-radius: 16px; outline: 1px solid white; outline-offset: -1px; box-shadow: 0 2px 2px rgba(0,0,0,0.12);">
+            <div style="width: 18px; height: 18px; position: relative;">
+              <div style="width: 10.88px; height: 10.88px; position: absolute; left: 3.56px; top: 3.56px; outline: 1.5px solid #282828; outline-offset: -0.75px; border-radius: 50%;"></div>
+            </div>
+            <span style="font-size: 10px; font-weight: 700; color: #282828;">Deals</span>
+          </div>
+          <p class="text-white m-0" style="font-size: 13px; line-height: 15.6px;">Se dagens sidste chancer,<br>det kunne være noget for dig</p>
+          <button class="d-flex align-items-center gap-2 px-2" style="font-size: 10px; font-weight: 700; color: #F9F9FB; background: transparent; border: none;">
+            <span>Se mere</span>
+            <i class="bi bi-arrow-right-circle-fill" style="font-size: 14px;"></i>
+          </button>
+        </div>
+      <img src="https://s3-alpha-sig.figma.com/img/431b/9328/45f79452d9c5b2317cd5642cae0c003b?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PWpe~u81F8YtuA4T6rgKgXfxkENO8WU~FyMix1Q2kNQdZIutX25jnddeFJKD51YoNVPUsb52E5QXvowVQt2vrVea8x0lv09WU9uacBsajR-WLxDEsXCZ2AjkOXz97WKyUKqtn2FgOvk3-o1Rxw5NGgc-fxPz10D8LaEORtYZzvglosXL9HX0FnMrwztRSQAy-4Qp7KBBKWUFb-cekApfLHTm6truU0H47-Fn1GDfLwJtiCPoa8DxvFUaJMcUA4fUrmoQ~v665zhr8~0k7j5sBuAoq9fgOxmGNfU0BxALTlaZ8bO165FjusoQl3a7AEicmy2S86Oh3f0Yo-l8DYF0Jw__" alt="Deals" class="custom-icon"/>
     </div>
-    <div class="slide" style="background: #3C85FC">
-      <div class="d-flex flex-column gap-3" style="width: 208px;">
-        <div class="tag"><div style="width: 10px; height: 10px; border: 1.5px solid #282828; border-radius: 50%;"></div>Crazy Coupons</div>
-        <p>Se dagens sidste chancer,<br/>det kunne være noget for dig</p>
-        <button>Se mere</button>
-      </div>
-      <img src="https://placehold.co/74x86" alt="Crazy Coupons" />
+    <div class="slide d-flex align-items-center p-3" style="min-width: 90%; background: #3C85FC; border-radius: 16px; box-shadow: 0 0 2.3px rgba(0, 0, 0, 0.25);">
+        <div class="d-flex flex-column justify-content-start align-items-start gap-3 me-3" style="width: 208px;">
+          <div class="d-flex align-items-center gap-2 px-3 py-1" style="background: rgba(249, 249, 251, 0.72); border-radius: 16px; outline: 1px solid white; outline-offset: -1px; box-shadow: 0 2px 2px rgba(0,0,0,0.12);">
+            <div style="width: 18px; height: 18px; position: relative;">
+              <div style="width: 10.88px; height: 10.88px; position: absolute; left: 3.56px; top: 3.56px; outline: 1.5px solid #282828; outline-offset: -0.75px; border-radius: 50%;"></div>
+            </div>
+            <span style="font-size: 10px; font-weight: 700; color: #282828;">Crazy Coupons</span>
+          </div>
+          <p class="text-white m-0" style="font-size: 13px; line-height: 15.6px;">Se dagens sidste chancer,<br>det kunne være noget for dig</p>
+          <button class="d-flex align-items-center gap-2 px-2" style="font-size: 10px; font-weight: 700; color: #F9F9FB; background: transparent; border: none;">
+            <span>Se mere</span>
+            <i class="bi bi-arrow-right-circle-fill" style="font-size: 14px;"></i>
+          </button>
+        </div>
+      <img src="https://s3-alpha-sig.figma.com/img/431b/9328/45f79452d9c5b2317cd5642cae0c003b?Expires=1746403200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PWpe~u81F8YtuA4T6rgKgXfxkENO8WU~FyMix1Q2kNQdZIutX25jnddeFJKD51YoNVPUsb52E5QXvowVQt2vrVea8x0lv09WU9uacBsajR-WLxDEsXCZ2AjkOXz97WKyUKqtn2FgOvk3-o1Rxw5NGgc-fxPz10D8LaEORtYZzvglosXL9HX0FnMrwztRSQAy-4Qp7KBBKWUFb-cekApfLHTm6truU0H47-Fn1GDfLwJtiCPoa8DxvFUaJMcUA4fUrmoQ~v665zhr8~0k7j5sBuAoq9fgOxmGNfU0BxALTlaZ8bO165FjusoQl3a7AEicmy2S86Oh3f0Yo-l8DYF0Jw__" alt="Crazy Coupons"  class="custom-icon"/>
     </div>
   </div>
 
@@ -160,45 +229,56 @@
     <div></div><div></div><div></div>
   </div>
 
-  <!-- KATEGORIER -->
-  <h6 class="fw-bold px-3">Kategorier</h6>
-  <div class="d-flex overflow-auto px-3 gap-3 pb-3">
-    <div class="text-center">
-      <img src="https://placehold.co/41x41" class="rounded-circle bg-warning mb-1" alt="Oplevelse" />
-      <div class="small fw-bold">Oplevelse</div>
+ <!-- KATEGORIER -->
+<h6 class="fw-bold px-3">Kategorier</h6>
+<div class="d-flex overflow-auto px-3 gap-3 pb-3">
+  <div class="d-flex flex-column align-items-center" style="width: 70px;">
+    <img src="oplevelse.png" class="rounded-circle mb-1" alt="Oplevelse" width="41" height="41" />
+    <div class="small fw-bold text-center">Oplevelse</div>
+  </div>
+  <div class="d-flex flex-column align-items-center" style="width: 70px;">
+    <img src="hjem og livstil.png" class="rounded-circle mb-1" alt="Hjem og livsstil" width="41" height="41" />
+    <div class="small fw-bold text-center">Hjem og livsstil</div>
+  </div>
+  <div class="d-flex flex-column align-items-center" style="width: 70px;">
+    <img src="familie.png" class="rounded-circle mb-1" alt="Familie" width="41" height="41" />
+    <div class="small fw-bold text-center">Familie</div>
+  </div>
+  <div class="d-flex flex-column align-items-center" style="width: 70px;">
+    <img src="Ellipse 11 (1).png" class="rounded-circle mb-1" alt="Skønhed" width="41" height="41" />
+    <div class="small fw-bold text-center">Skønhed</div>
+  </div>
+</div>
+
+  
+ <!-- CRAZY COUPONS -->
+<h6 class="fw-bold px-3">Crazy-Coupons</h6>
+<div class="card border-0 shadow-sm" style="width: 331px; border-radius: 12px; background-image: url('https://placehold.co/331x135'); background-size: cover; background-position: center;">
+  <div class="d-flex justify-content-between align-items-center px-2 pt-2">
+    <!-- 5+ tilbage mærke -->
+    <div class="bg-white bg-opacity-75 px-2 py-1 rounded-pill shadow-sm d-flex align-items-center" style="font-size: 10px; font-weight: 700; border: 1px solid white; color: #535353;">
+      5+ tilbage
     </div>
-    <div class="text-center">
-      <img src="https://placehold.co/41x41" class="rounded-circle bg-primary mb-1" alt="Hjem og livsstil" />
-      <div class="small fw-bold">Hjem og livsstil</div>
+    <!-- Hjerte ikon -->
+    <div class="bg-white rounded-circle d-flex align-items-center justify-content-center" style="width: 18px; height: 18px;">
+      <i class="bi bi-heart-fill text-dark" style="font-size: 12px;"></i>
     </div>
-    <div class="text-center">
-      <img src="https://placehold.co/41x41" class="rounded-circle bg-success mb-1" alt="Familie" />
-      <div class="small fw-bold">Familie</div>
+  </div>
+
+  <div class="bg-white px-2 py-2 rounded-bottom mt-auto">
+    <div class="d-flex flex-wrap align-items-center justify-content-between text-dark" style="font-size: 10px;">
+      <div class="d-flex align-items-center gap-1"><i class="bi bi-geo-alt-fill" style="font-size: 10px;"></i> Kbg</div>
+      <div class="d-flex align-items-center gap-1"><i class="bi bi-shop" style="font-size: 10px;"></i> Adiddas</div>
+      <div class="d-flex align-items-center gap-1"><i class="bi bi-clock" style="font-size: 10px;"></i> 04.04: 20.00</div>
+      <div class="d-flex align-items-center gap-1 text-success fw-bold" style="font-size: 12px;"><i class="bi bi-percent" style="font-size: 10px;"></i> 40%</div>
     </div>
-    <div class="text-center">
-      <img src="https://placehold.co/41x41" class="rounded-circle bg-danger mb-1" alt="Skønhed" />
-      <div class="small fw-bold">Skønhed</div>
+    <div class="d-flex align-items-center gap-2 mt-2" style="font-size: 8px;">
+      <span class="fw-bold text-dark">Se mere</span>
+      <i class="bi bi-arrow-right-circle-fill text-dark" style="font-size: 14px;"></i>
     </div>
   </div>
 </div>
-</body>
-</html>
- <!-- CRAZY COUPONS -->
-  <h6 class="fw-bold px-3">Crazy Coupons</h6>
-  <div class="coupon-scroll d-flex overflow-auto px-3 gap-3">
-    <div class="card" style="min-width: 331px;">
-      <img src="https://placehold.co/331x135" class="card-img-top" alt="Coupon">
-      <div class="card-body p-2">
-        <div class="fw-bold" style="font-size: 10px;">Nike Sko v 32 Air - Aarhus N</div>
-        <div class="d-flex justify-content-between text-muted small">
-          <span><i class="bi bi-geo-alt-fill"></i> Kbg</span>
-          <span><i class="bi bi-shop"></i> Adidas</span>
-          <span><i class="bi bi-clock"></i> 04.04: 20.00</span>
-          <span class="text-success fw-bold"><i class="bi bi-ticket-perforated"></i> 40%</span>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- POPULÆRE DEALS -->
   <h6 class="fw-bold px-3 mt-4">Populære deals</h6>
@@ -215,23 +295,39 @@
 <!-- NAVIGATION -->
 <nav class="navbar bg-white border-top shadow-sm fixed-bottom">
   <div class="container d-flex justify-content-between align-items-center position-relative">
+    
+    <!-- Hjem -->
     <div class="text-center">
-      <i class="bi bi-house fs-4"></i><div class="small">Hjem</div>
+      <i class="bi bi-house fs-4"></i>
+      <div class="small fw-medium">Hjem</div>
     </div>
+
+    <!-- VIP Clubs -->
     <div class="text-center">
-      <i class="bi bi-qr-code-scan fs-4"></i><div class="small">Scan</div>
+      <i class="bi bi-star fs-4"></i>
+      <div class="small">VIP Clubs</div>
     </div>
+
+    <!-- Søg (midten) -->
     <div class="nav-button">
       <i class="bi bi-search fs-4"></i>
     </div>
+
+    <!-- Wallet -->
     <div class="text-center">
-      <i class="bi bi-wallet2 fs-4"></i><div class="small">Wallet</div>
+      <i class="bi bi-wallet2 fs-4"></i>
+      <div class="small">Wallet</div>
     </div>
+
+    <!-- Menu -->
     <div class="text-center">
-      <i class="bi bi-list fs-4"></i><div class="small">Menu</div>
+      <i class="bi bi-list fs-4"></i>
+      <div class="small">Menu</div>
     </div>
+
   </div>
 </nav>
+
 
 <!-- AUTO SLIDE -->
 <script>
