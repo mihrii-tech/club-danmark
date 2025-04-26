@@ -9,38 +9,41 @@
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(180deg, #FF8383 0%, #FF2F2F 100%);
-      font-family: 'Poppins', sans-serif;
+      width: 100vw;
+      background: #eee;
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .scale-container {
+      width: 390px;
+      height: 844px;
+      background: linear-gradient(180deg, #FF8383 0%, #FF2F2F 100%);
+      position: relative;
+      border-radius: 40px;
+      transform-origin: top left;
+      overflow: hidden;
+    }
+
+    .background-icon {
+      position: absolute;
+      z-index: 1;
     }
 
     .check-mail-box {
       background: white;
       border-radius: 28px;
-      padding: 40px 20px;
-      width: 90%;
-      max-width: 360px;
+      padding: 2rem;
+      width: 320px;
       text-align: center;
-      position: relative;
-    }
-
-    .check-mail-box h5 {
-      font-weight: 700;
-      font-size: 20px;
-    }
-
-    .check-mail-box p {
-      font-size: 13px;
-      color: #BCBEC0;
-      margin-bottom: 1rem;
-    }
-
-    .code-inputs {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
     }
 
     .code-inputs input {
@@ -77,25 +80,53 @@
       text-decoration: underline;
     }
   </style>
+
+  <script>
+    function scalePhone() {
+      const phone = document.querySelector('.scale-container');
+      const scaleX = window.innerWidth / 390;
+      const scaleY = window.innerHeight / 844;
+      const scale = Math.min(scaleX, scaleY);
+      phone.style.transform = `scale(${scale})`;
+    }
+
+    window.addEventListener('resize', scalePhone);
+    window.addEventListener('load', scalePhone);
+  </script>
+
 </head>
 <body>
+
+<div class="scale-container">
+
+  <!-- Baggrundsikoner -->
+  <img src="Saly-2.png" class="background-icon" style="width: 227px; height: 227px; top: 59px; left: 87px;">
+  <img src="Donut 1.png" class="background-icon" style="width: 39px; height: 39px; top: 152px; left: 307px;">
+  <img src="Cookie 1 (2).png" class="background-icon" style="width: 39px; height: 39px; top: 738px; left: 349px;">
+  <img src="Sun 1 (1).png" class="background-icon" style="width: 52px; height: 52px; top: 790px; left: 45px;">
+
+  <!-- Check din mail box -->
   <div class="check-mail-box">
     <h5>Check din mail</h5>
     <p>Vi har sendt et reset link til din mail</p>
     <p><strong>Mail@hotmail.com</strong></p>
 
-    <div class="code-inputs">
-      <input type="text" maxlength="1">
-      <input type="text" maxlength="1">
-      <input type="text" maxlength="1">
-      <input type="text" maxlength="1">
+    <div class="d-flex justify-content-between mb-3 code-inputs">
+      <input type="text" maxlength="1" class="form-control">
+      <input type="text" maxlength="1" class="form-control">
+      <input type="text" maxlength="1" class="form-control">
+      <input type="text" maxlength="1" class="form-control">
     </div>
 
     <button class="btn btn-dark-gradient">Verificere</button>
 
-    <div class="resend">
+    <div class="resend mt-3">
       Ikke modtaget koden? <a href="#">Send email igen</a>
     </div>
   </div>
+
+</div>
+
 </body>
 </html>
+
