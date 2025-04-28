@@ -4,77 +4,100 @@
   <meta charset="UTF-8">
   <title>Mine Clubs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #fdfdfe;
+      background-color: white;
       padding: 20px;
-    }
-
-    .section-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: black;
-      line-height: 15.6px;
-      margin-bottom: 16px;
     }
 
     .club-card {
       position: relative;
-      border-radius: 12px;
-      background-size: cover;
-      background-repeat: no-repeat;
-      padding: 12px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 12px;
+      padding: 12px;
+      gap:12px;
+      width: 100%;
+      min-height: 100px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .club-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
     .club-logo {
       background: #FEFEFF;
       border-radius: 12px;
-      padding: 10px;
+      padding: 8px;
+      width: 64px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 70px;
     }
 
     .club-info {
-      color: #282828;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
     }
 
     .club-name {
-      font-weight: 700;
       font-size: 16px;
-      line-height: 19.2px;
+      font-weight: 700;
+      color: #282828;
+      line-height: 1;
     }
 
     .club-city {
-      font-weight: 400;
       font-size: 13px;
       color: #535353;
+      font-weight: 400;
+      line-height: 1;
+    margin-top: 4px;
     }
 
     .deals-btn {
-      background: conic-gradient(from 90deg at 50% 50%, #282828 92deg, #3D3D3D 286deg);
-      color: white;
-      font-size: 13px;
-      font-weight: 700;
-      border-radius: 12px;
-      padding: 8px 12px;
+  background: conic-gradient(from 90deg at 50% 50%, #282828 92deg, #3D3D3D 286deg);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centrer tekst + pil */
+  gap: 10px; /* Mellemrum mellem "Deals" og pilen */
+  height: 36px;
+  text-decoration: none; /* Sikrer ingen understregning */
+}
+
+    
+
+    .badge-wrapper {
+      position: absolute;
+      top: 12px;
+      right: 16px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
     }
 
     .notification-badge {
       position: absolute;
-      top: 12px;
-      right: 12px;
+      top: -5px;
+      right: -5px;
       background: white;
       color: #242424;
       font-size: 8px;
@@ -86,210 +109,166 @@
       justify-content: center;
       align-items: center;
     }
-    .nav-label  {
-  color: #6F6F6F;
-  font-size: 13px;
-  font-family: Poppins;
-  font-weight: 400;
-  line-height: 15.6px;
-  word-wrap: break-word;
-  margin-top: 2px;
-} 
-  navbar {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: white;
-      border-top: 1px solid #ddd;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      z-index: 999;
-    }
 
-    .nav-item {
-      text-align: center;
-      font-size: 12px;
-      color: #282828;
-    }
-
-    .nav-button {
-      background: #ff5959;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .nav-button i {
-      color: white;
-      font-size: 22px;
-    }
-    .icon-box {
+    .bell-icon svg {
       width: 20px;
       height: 20px;
-      border: 1.5px solid #242424;
-      border-radius: 50%;
-      position: absolute;
-      top: 12px;
-      right: 36px;
     }
+
+    /* Baggrunde med kun farver */
+    .bg-adidas { background: linear-gradient(90deg, #8484FF); }
+    .bg-matas { background: linear-gradient(90deg, #84FF8E); }
+    .bg-circlek { background: linear-gradient(90deg, #FFD884); }
+    .bg-fitnessx { background: linear-gradient(90deg, #FF84DC); }
+    .bg-zara { background: linear-gradient(90deg, #FF8484); }
   </style>
 </head>
-<body>
-    <div class="section-title">Mine Clubs</div>
 
-    <!-- Klub 1 -->
-    <div class="club-card" style="background-color: #8484FF; background-image: url('https://placehold.co/362x93');">
-      <div class="d-flex align-items-center gap-3">
-        <div class="club-logo">
-          <img src="https://placehold.co/49x49" alt="Logo" class="img-fluid">
-        </div>
-        <div class="club-info">
-          <div class="club-name">Adidas</div>
-          <div class="club-city">Aarhus</div>
-        </div>
-      </div>
-      <div class="deals-btn">
-        Deals <i class="bi bi-box-arrow-up-right" style="font-size: 14px;"></i>
-      </div>
-      <div class="icon-box"></div>
-      <div class="notification-badge">12</div>
-    </div>
-    
-    <!-- Klub 2 -->
-    <div class="club-card" style="background-color: #84FF8E; background-image: url('https://placehold.co/362x93');">
-      <div class="d-flex align-items-center gap-3">
-        <div class="club-logo">
-          <img src="https://placehold.co/49x49" alt="Logo" class="img-fluid">
-        </div>
-        <div class="club-info">
-          <div class="club-name">Matas</div>
-          <div class="club-city">Aalborg</div>
-        </div>
-      </div>
-      <div class="deals-btn">
-        Deals <i class="bi bi-box-arrow-up-right" style="font-size: 14px;"></i>
-      </div>
-      <div class="icon-box"></div>
-      <div class="notification-badge">8</div>
-    </div>
-    
-    <!-- Klub 3 -->
-    <div class="club-card" style="background-color: #FFD884; background-image: url('https://placehold.co/362x93');">
-      <div class="d-flex align-items-center gap-3">
-        <div class="club-logo">
-          <img src="https://placehold.co/49x49" alt="Logo" class="img-fluid">
-        </div>
-        <div class="club-info">
-          <div class="club-name">Circle K</div>
-          <div class="club-city">Randers</div>
-        </div>
-      </div>
-      <div class="deals-btn">
-        Deals <i class="bi bi-box-arrow-up-right" style="font-size: 14px;"></i>
-      </div>
-      <div class="icon-box"></div>
-      <div class="notification-badge">6</div>
-    </div>
-    
-    <!-- Klub 4 -->
-    <div class="club-card" style="background-color: #FF84DC; background-image: url('https://placehold.co/362x93');">
-      <div class="d-flex align-items-center gap-3">
-        <div class="club-logo">
-          <img src="https://placehold.co/49x49" alt="Logo" class="img-fluid">
-        </div>
-        <div class="club-info">
-          <div class="club-name">FitnessX</div>
-          <div class="club-city">København</div>
-        </div>
-      </div>
-      <div class="deals-btn">
-        Deals <i class="bi bi-box-arrow-up-right" style="font-size: 14px;"></i>
-      </div>
-      <div class="icon-box"></div>
-      <div class="notification-badge">4</div>
-    </div>
-    
-    <!-- Klub 5 -->
-    <div class="club-card" style="background-color: #FF8484; background-image: url('https://placehold.co/362x93');">
-      <div class="d-flex align-items-center gap-3">
-        <div class="club-logo">
-          <img src="https://placehold.co/49x49" alt="Logo" class="img-fluid">
-        </div>
-        <div class="club-info">
-          <div class="club-name">Zara</div>
-          <div class="club-city">Odense</div>
-        </div>
-      </div>
-      <div class="deals-btn">
-        Deals <i class="bi bi-box-arrow-up-right" style="font-size: 14px;"></i>
-      </div>
-      <div class="icon-box"></div>
-      <div class="notification-badge">3</div>
-    </div>
-    
-    <!-- Klub 6 -->
-    <div class="club-card" style="background-color: #8484FF; background-image: url('https://placehold.co/362x93');">
-      <div class="d-flex align-items-center gap-3">
-        <div class="club-logo">
-          <img src="https://placehold.co/49x49" alt="Logo" class="img-fluid">
-        </div>
-        <div class="club-info">
-          <div class="club-name">Adidas</div>
-          <div class="club-city">Esbjerg</div>
-        </div>
-      </div>
-      <div class="deals-btn">
-        Deals <i class="bi bi-box-arrow-up-right" style="font-size: 14px;"></i>
-      </div>
-      <div class="icon-box"></div>
-      <div class="notification-badge">1</div>
-    </div>
-  <div class="club-card" style="background-color: #8484FF; background-image: url('https://placehold.co/362x93');">
-    <div class="d-flex align-items-center gap-3">
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="fw-bold fs-4">Mine Clubs</div>
+  </div>
+
+  <!-- Adidas kort -->
+  <div class="club-card bg-adidas">
+    <div class="club-left">
       <div class="club-logo">
-        <img src="https://placehold.co/49x49" alt="Logo" class="img-fluid">
+        <img src="adidas.png" alt="Adidas" class="img-fluid">
       </div>
       <div class="club-info">
-        <div class="club-name">ClubName</div>
-        <div class="club-city">City Name</div>
+        <div class="club-name">Adidas</div>
+        <div class="club-city">Aarhus</div>
       </div>
     </div>
-    <div class="deals-btn">
-      Deals <i class="bi bi-box-arrow-up-right" style="font-size: 14px;"></i>
+    <a href="#" class="deals-btn">
+      Deals
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M12.9375 11.4375V5.0625H6.5625M12.75 5.25L5.0625 12.9375" stroke="#FEFEFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <div class="badge-wrapper">
+      <div class="notification-badge">12</div>
+      <div class="bell-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+          <path d="M7.5 13.958c0 0 0 2.083 2.5 2.083s2.5-2.083 2.5-2.083M14.375 8.333v1.667l1.667 3.542H3.958l1.667-3.542V8.333c0-2.416 1.958-4.375 4.375-4.375s4.375 1.959 4.375 4.375Z" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
     </div>
-    <div class="icon-box"></div>
-    <div class="notification-badge">12</div>
+  </div>
+
+  <!-- Matas kort -->
+  <div class="club-card bg-matas">
+    <div class="club-left">
+      <div class="club-logo">
+        <img src="matas.png" alt="Matas" class="img-fluid">
+      </div>
+      <div class="club-info">
+        <div class="club-name">Matas</div>
+        <div class="club-city">Aalborg</div>
+      </div>
+    </div>
+    <a href="#" class="deals-btn">
+      Deals
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M12.9375 11.4375V5.0625H6.5625M12.75 5.25L5.0625 12.9375" stroke="#FEFEFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <div class="badge-wrapper">
+      <div class="notification-badge">8</div>
+      <div class="bell-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+          <path d="M7.5 13.958c0 0 0 2.083 2.5 2.083s2.5-2.083 2.5-2.083M14.375 8.333v1.667l1.667 3.542H3.958l1.667-3.542V8.333c0-2.416 1.958-4.375 4.375-4.375s4.375 1.959 4.375 4.375Z" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Circle K kort -->
+  <div class="club-card bg-circlek">
+    <div class="club-left">
+      <div class="club-logo">
+        <img src="circlek.png" alt="Circle K" class="img-fluid">
+      </div>
+      <div class="club-info">
+        <div class="club-name">Circle K</div>
+        <div class="club-city">Randers</div>
+      </div>
+    </div>
+    <a href="#" class="deals-btn">
+      Deals
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M12.9375 11.4375V5.0625H6.5625M12.75 5.25L5.0625 12.9375" stroke="#FEFEFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <div class="badge-wrapper">
+      <div class="notification-badge">6</div>
+      <div class="bell-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+          <path d="M7.5 13.958c0 0 0 2.083 2.5 2.083s2.5-2.083 2.5-2.083M14.375 8.333v1.667l1.667 3.542H3.958l1.667-3.542V8.333c0-2.416 1.958-4.375 4.375-4.375s4.375 1.959 4.375 4.375Z" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- FitnessX kort -->
+  <div class="club-card bg-fitnessx">
+    <div class="club-left">
+      <div class="club-logo">
+        <img src="fitnessx.png" alt="FitnessX" class="img-fluid">
+      </div>
+      <div class="club-info">
+        <div class="club-name">FitnessX</div>
+        <div class="club-city">København</div>
+      </div>
+    </div>
+    <a href="#" class="deals-btn">
+      Deals
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M12.9375 11.4375V5.0625H6.5625M12.75 5.25L5.0625 12.9375" stroke="#FEFEFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <div class="badge-wrapper">
+      <div class="notification-badge">4</div>
+      <div class="bell-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+          <path d="M7.5 13.958c0 0 0 2.083 2.5 2.083s2.5-2.083 2.5-2.083M14.375 8.333v1.667l1.667 3.542H3.958l1.667-3.542V8.333c0-2.416 1.958-4.375 4.375-4.375s4.375 1.959 4.375 4.375Z" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zara kort -->
+  <div class="club-card bg-zara">
+    <div class="club-left">
+      <div class="club-logo">
+        <img src="zara.png" alt="Zara" class="img-fluid">
+      </div>
+      <div class="club-info">
+        <div class="club-name">Zara</div>
+        <div class="club-city">Odense</div>
+      </div>
+    </div>
+    <a href="#" class="deals-btn">
+      Deals
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M12.9375 11.4375V5.0625H6.5625M12.75 5.25L5.0625 12.9375" stroke="#FEFEFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <div class="badge-wrapper">
+      <div class="notification-badge">3</div>
+      <div class="bell-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+          <path d="M7.5 13.958c0 0 0 2.083 2.5 2.083s2.5-2.083 2.5-2.083M14.375 8.333v1.667l1.667 3.542H3.958l1.667-3.542V8.333c0-2.416 1.958-4.375 4.375-4.375s4.375 1.959 4.375 4.375Z" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
 </div>
 
-    <div class="container d-flex justify-content-between align-items-center position-relative">
-      <div class="nav-item">
-        <i class="bi bi-house fs-4"></i>
-        <div>Hjem</div>
-      </div>
-      <div class="nav-item">
-        <i class="bi bi-qr-code-scan fs-4"></i>
-        <div>Scan</div>
-      </div>
-      <div class="nav-button">
-        <i class="bi bi-search"></i>
-      </div>
-      <div class="nav-item">
-        <i class="bi bi-wallet2 fs-4"></i>
-        <div>Wallet</div>
-      </div>
-      <div class="nav-item">
-        <i class="bi bi-list fs-4"></i>
-        <div>Menu</div>
-      </div>
-    </div>
-  </nav>
 </body>
 </html>
