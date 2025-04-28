@@ -121,6 +121,54 @@
     .bg-circlek { background: linear-gradient(90deg, #FFD884); }
     .bg-fitnessx { background: linear-gradient(90deg, #FF84DC); }
     .bg-zara { background: linear-gradient(90deg, #FF8484); }
+  
+    /* Bundnavigation */
+    nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  z-index: 999;
+}
+
+    .nav-item {
+      font-size: 12px;
+      color: #282828;
+      text-align: center;
+    }
+
+    .nav-label {
+      font-size: 13px;
+      color: #6F6F6F;
+      margin-top: 2px;
+    }
+
+    .nav-button {
+      background: #ff5959;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 22px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 30px;
+      position: relative;
+      top: -0,5px; 
+      z-index: 10; 
+    }
+  
+  
+  
   </style>
 </head>
 
@@ -267,8 +315,35 @@
       </div>
     </div>
   </div>
+<!-- Bundnavigation -->
+<nav class="container d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 end-0 bg-white border-top py-2" style="z-index: 999;">
+  
+  <div class="nav-item text-center">
+    <i class="bi bi-house fs-4"></i>
+    <div class="nav-label">Hjem</div>
+  </div>
 
-</div>
+  <div class="nav-item text-center">
+    <i class="bi bi-qr-code-scan fs-4"></i>
+    <div class="nav-label">Scan</div>
+  </div>
+
+  <div class="nav-button">
+    <i class="bi bi-search"></i>
+  </div>
+
+  <div class="nav-item text-center">
+    <i class="bi bi-wallet2 fs-4"></i>
+    <div class="nav-label">Wallet</div>
+  </div>
+
+  <div class="nav-item text-center">
+    <i class="bi bi-list fs-4"></i>
+    <div class="nav-label">Menu</div>
+  </div>
+
+</nav>
 
 </body>
 </html>
+</div>
