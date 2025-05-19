@@ -247,125 +247,185 @@
   </div>
 </div>
 
-
-    </div>
-    <div id="omos" class="tab-pane d-none">
-      <div class="subtabs">
-        <button class="btn active">News feed</button>
-        <button class="btn">Galleri</button>
-        <button class="btn">Om os</button>
-      </div>
-      <div id="omos" class="tab-pane d-none">
+<!-- OM OS SEKTION -->
+<div id="omos" class="tab-pane d-none">
   <!-- Undertabs -->
-  <div class="subtabs" id="subtabs-omos">
-    <button class="btn active" onclick="switchOmosTab('omos-newsfeed', this)">News feed</button>
-    <button class="btn" onclick="switchOmosTab('omos-gallery', this)">Galleri</button>
-    <button class="btn" onclick="switchOmosTab('omos-about', this)">Om os</button>
+  <div class="subtabs d-flex justify-content-around px-3 pt-2 pb-1" id="subtabs-omos">
+    <button class="btn btn-light btn-sm active" onclick="switchOmosSubtab('omos-news', this)">News feed</button>
+    <button class="btn btn-light btn-sm" onclick="switchOmosSubtab('omos-gallery', this)">Galleri</button>
+    <button class="btn btn-light btn-sm" onclick="switchOmosSubtab('omos-about', this)">Om os</button>
   </div>
 
   <!-- News feed -->
-  <div id="omos-newsfeed">
-    <!-- OM OS: News feed -->
-<div id="omos-newsfeed" class="pt-3 px-3">
-  <!-- Opslag -->
-  <div class="card border-0 mb-4 shadow-sm rounded-4">
-    <!-- Header -->
-    <div class="d-flex align-items-center p-3">
-      <img src="https://source.unsplash.com/40x40/?profile" class="rounded-circle me-2" width="40" height="40" />
-      <div>
-        <div class="fw-bold small">Adidas</div>
-        <div class="text-muted" style="font-size: 12px;">Aarhus Syd</div>
+  <div id="omos-news" class="px-3 pt-2">
+    <div class="card border-0 mb-4 shadow-sm rounded-4">
+      <!-- Header -->
+      <div class="d-flex align-items-center p-3">
+        <img src="https://source.unsplash.com/40x40/?profile" class="rounded-circle me-2" width="40" height="40" />
+        <div>
+          <div class="fw-bold small">Adidas</div>
+          <div class="text-muted" style="font-size: 12px;">Aarhus Syd</div>
+        </div>
+        <div class="ms-auto"><i class="bi bi-three-dots"></i></div>
       </div>
-      <div class="ms-auto">
-        <i class="bi bi-three-dots"></i>
+
+      <!-- Scrollbare billeder -->
+      <div class="d-flex overflow-auto gap-2 px-3 pb-2 scroll-container" style="scroll-snap-type: x mandatory;">
+        <img src="https://source.unsplash.com/300x200/?tennis" class="rounded-3" style="height: 180px; flex: 0 0 auto; scroll-snap-align: start;" />
+        <img src="https://source.unsplash.com/301x200/?tennis" class="rounded-3" style="height: 180px; flex: 0 0 auto; scroll-snap-align: start;" />
+        <img src="https://source.unsplash.com/302x200/?tennis" class="rounded-3" style="height: 180px; flex: 0 0 auto; scroll-snap-align: start;" />
+      </div>
+
+      <!-- Dots -->
+      <div class="text-center my-2">
+        <span class="dot bg-dark rounded-circle mx-1" style="width: 6px; height: 6px; display: inline-block;"></span>
+        <span class="dot bg-secondary rounded-circle mx-1" style="width: 6px; height: 6px; display: inline-block;"></span>
+        <span class="dot bg-secondary rounded-circle mx-1" style="width: 6px; height: 6px; display: inline-block;"></span>
+      </div>
+
+      <!-- Ikoner -->
+      <div class="px-3 d-flex justify-content-between text-muted small pb-2">
+        <div class="d-flex gap-3">
+          <i class="bi bi-heart"></i>
+          <i class="bi bi-chat-dots"></i>
+          <i class="bi bi-send"></i>
+        </div>
+        <i class="bi bi-bookmark"></i>
+      </div>
+
+      <!-- Beskrivelse -->
+      <div class="px-3 pb-3 small">
+        <strong>Adidas</strong> Streamline Your Workday, Elevate Your Life.<br>
+        <span class="text-primary">#Tennis</span><br>
+        <span class="text-muted">21 November</span>
       </div>
     </div>
-
-    <!-- Billed-scroll -->
-    <div class="d-flex overflow-auto gap-2 px-3 pb-2">
-      <img src="https://source.unsplash.com/300x200/?tennis" class="rounded-3" style="height: 180px; flex: 0 0 auto;" />
-      <img src="https://source.unsplash.com/301x200/?tennis" class="rounded-3" style="height: 180px; flex: 0 0 auto;" />
-      <img src="https://source.unsplash.com/302x200/?tennis" class="rounded-3" style="height: 180px; flex: 0 0 auto;" />
-    </div>
-
-    <!-- Interaktion -->
-    <div class="px-3 d-flex justify-content-between text-muted small pb-2">
-      <div class="d-flex gap-3">
-        <i class="bi bi-heart"></i>
-        <i class="bi bi-chat-dots"></i>
-        <i class="bi bi-send"></i>
-      </div>
-      <i class="bi bi-bookmark"></i>
-    </div>
-
-    <!-- Tekst -->
-    <div class="px-3 pb-3 small">
-      <strong>Adidas</strong> Streamline Your Workday, Elevate Your Life.  
-      <div class="text-primary">#Tennis</div>
-      <div class="text-muted">21 November</div>
-    </div>
-  </div>
-</div>
-
   </div>
 
   <!-- Galleri -->
-  <div id="omos-gallery" style="display: none;">
-    <p class="px-3 text-muted">📸 Galleri kommer snart...</p>
-  </div>
-
-  <!-- Om os -->
-  <div id="omos-about" style="display: none;">
-    <p class="px-3 text-muted">ℹ️ Information om butikken...</p>
+  <!-- Galleri -->
+<div id="omos-gallery" class="px-3 pt-2 d-none">
+  <div class="row row-cols-3 g-2">
+    <div class="col">
+      <img src="https://source.unsplash.com/100x100/?store" class="img-fluid rounded-2" alt="Galleri billede">
+    </div>
+    <div class="col">
+      <img src="https://source.unsplash.com/101x100/?shop" class="img-fluid rounded-2" alt="Galleri billede">
+    </div>
+    <div class="col">
+      <img src="https://source.unsplash.com/102x100/?fashion" class="img-fluid rounded-2" alt="Galleri billede">
+    </div>
+    <div class="col">
+      <img src="https://source.unsplash.com/103x100/?interior" class="img-fluid rounded-2" alt="Galleri billede">
+    </div>
+    <div class="col">
+      <img src="https://source.unsplash.com/104x100/?product" class="img-fluid rounded-2" alt="Galleri billede">
+    </div>
+    <div class="col">
+      <img src="https://source.unsplash.com/105x100/?clothing" class="img-fluid rounded-2" alt="Galleri billede">
+    </div>
+    <div class="col">
+      <img src="https://source.unsplash.com/106x100/?bag" class="img-fluid rounded-2" alt="Galleri billede">
+    </div>
+    <div class="col">
+      <img src="https://source.unsplash.com/107x100/?retail" class="img-fluid rounded-2" alt="Galleri billede">
+    </div>
+    <div class="col">
+      <img src="https://source.unsplash.com/108x100/?display" class="img-fluid rounded-2" alt="Galleri billede">
+    </div>
   </div>
 </div>
+
+  <!-- Om os -->
+  <!-- Om os - Info -->
+<div id="omos-about" class="px-3 pt-2 d-none">
+  <!-- Kategori + rating -->
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <div class="d-flex flex-column">
+      <div class="fw-semibold">🥦 Frugt & Grønt</div>
+      <div class="text-muted small">
+        <i class="bi bi-star-fill text-warning"></i> 4.5 <span class="text-muted">(459)</span>
+      </div>
+    </div>
+    <div class="text-end small text-primary">
+      <i class="bi bi-geo-alt"></i> Find vej
+    </div>
+  </div>
+
+  <!-- Åbningstider -->
+  <div class="mb-2 small">
+    <strong>🕒 Åbningstider</strong><br>
+    Man - Fre: 08:00 - 18:00<br>
+    Lør - Søn: 10:00 - 16:00
+  </div>
+
+  <!-- Om tekst -->
+  <div class="small text-muted">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce egestas a lorem ac facilisis.
+    Nam a neque vitae ante tristique auctor. Sed dictum, arcu a molestie tincidunt, nulla nisl.
+  </div>
+</div>
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   // HOVEDTABS
   function switchMainTab(tabId, button) {
-    // Fjern aktiv klasse
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
 
-    // Skjul begge hovedsektioner
+    // Skjul begge hovedtab-indhold
     document.getElementById('tilbud').classList.add('d-none');
     document.getElementById('omos').classList.add('d-none');
 
-    // Vis den valgte hovedsektion
+    // Vis valgt hovedsektion
     document.getElementById(tabId).classList.remove('d-none');
 
-    // Vis/Skjul undertabs hvis det er "Tilbud"
-    const subtabs = document.getElementById('subtabs-tilbud');
+    // Vis kun tilbuds-subtabs hvis "tilbud" valgt
+    const subtabsTilbud = document.getElementById('subtabs-tilbud');
     if (tabId === 'tilbud') {
-      subtabs.style.display = 'flex';
+      subtabsTilbud.style.display = 'flex';
     } else {
-      subtabs.style.display = 'none';
+      subtabsTilbud.style.display = 'none';
     }
   }
 
-  // UNDERTABS
+  // UNDERTABS – TILBUD
   function switchSubtab(subId, button) {
-    // Fjern aktiv klasse
     document.querySelectorAll('#subtabs-tilbud .btn').forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
 
-    // Skjul alle undersektioner
     ['tilbud-nyeste', 'tilbud-sidste', 'tilbud-black'].forEach(id => {
-      document.getElementById(id).style.display = 'none';
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
     });
 
-    // Vis den valgte undersektion
-    document.getElementById(subId).style.display = 'block';
+    const selected = document.getElementById(subId);
+    if (selected) selected.style.display = 'block';
   }
 
-  // Skjul "Om os" fra start
+  // UNDERTABS – OM OS
+  function switchOmosSubtab(subId, button) {
+    document.querySelectorAll('#subtabs-omos .btn').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    ['omos-news', 'omos-gallery', 'omos-about'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('d-none');
+    });
+
+    const selected = document.getElementById(subId);
+    if (selected) selected.classList.remove('d-none');
+  }
+
+  // Starttilstand: Skjul "Om os"-fanen ved load
   document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById('omos').classList.add('d-none');
+    const omos = document.getElementById('omos');
+    if (omos) omos.classList.add('d-none');
   });
 </script>
 </body>
 </html>
-
-
 
