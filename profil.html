@@ -137,10 +137,31 @@
       </div>
     </div>
     <!-- HOVEDTABS -->
-<div class="main-tabs">
-  <button class="tab-btn active" onclick="switchMainTab('tilbud', this)">Tilbud</button>
-  <button class="tab-btn" onclick="switchMainTab('omos', this)">Om os</button>
+<!-- SCROLLABLE MAIN TABS -->
+<div class="main-tabs overflow-auto px-2" style="white-space: nowrap; scrollbar-width: none; -ms-overflow-style: none;">
+  <div class="d-inline-flex gap-2" style="min-width: max-content;">
+    <button class="tab-btn active" onclick="switchMainTab('nyheder', this)">Nyheder</button>
+    <button class="tab-btn" onclick="switchMainTab('omos', this)">Om os</button>
+    <button class="tab-btn" onclick="switchMainTab('tilbud', this)">Tilbud</button>
+    <button class="tab-btn" onclick="switchMainTab('galleri', this)">Galleri</button>
+    <button class="tab-btn" onclick="switchMainTab('historien1', this)">Historien</button>
+    <button class="tab-btn" onclick="switchMainTab('adidas', this)">Adidas</button>
+    <button class="tab-btn" onclick="switchMainTab('nike', this)">Nike</button>
+    <button class="tab-btn" onclick="switchMainTab('jordan', this)">Jordan</button>
+    <button class="tab-btn" onclick="switchMainTab('newbalance', this)">New Balance</button>
+    <button class="tab-btn" onclick="switchMainTab('yeezy', this)">Yeezy</button>
+    <button class="tab-btn" onclick="switchMainTab('historien2', this)">Historien</button>
+    <button class="tab-btn" onclick="switchMainTab('shop', this)">Shop online</button>
+  </div>
 </div>
+
+<!-- Skjul scrollbar visuelt -->
+<style>
+  .main-tabs::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
 
 <!-- INDHOLDSTABS -->
 <div id="tilbud" class="tab-pane">
