@@ -3,196 +3,369 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profilside</title>
+  <title>ClubDanmark Profilside</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: #fafafc;
-      color: #282828;
     }
-    .profile-logo {
-      position: absolute;
-      bottom: -20px;
-      left: 15px;
-      width: 72px;
-      height: 72px;
-      border: 2px solid #FEFEFF;
+    .app-container {
+      max-width: 390px;
+      margin: 0 auto;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid #ddd;
       background-color: white;
-      border-radius: 360px;
-      background-image: url(https://bornholm.info/wp-content/media/2017/05/matas-i-gaagaden.jpg);
-      background-size: cover;
-      z-index: 2;
     }
-    .active-indicator {
-      position: absolute;
-      bottom: 4px;
-      right: 4px;
-      width: 16px;
-      height: 16px;
-      background-color: #07D623;
-      border-radius: 360px;
-      border: 2px solid #FEFEFF;
-      z-index: 3;
+    .profile-header {
+      position: relative;
     }
-    .tab-indicator {
-      position: absolute;
-      bottom: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #FF8383 0%, #FF2F2F 100%);
-      border-radius: 2px;
-      transition: all 0.3s ease-in-out;
-    }
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
+    .profile-img {
+      height: 160px;
       width: 100%;
-      height: 72px;
-      background: #fff;
-      border-top: 1px solid #ccc;
+      object-fit: cover;
+    }
+    .follow-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: white;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       display: flex;
-      justify-content: space-around;
       align-items: center;
-      z-index: 1000;
+      gap: 6px;
     }
-    .bottom-nav .item {
-      text-align: center;
-      font-size: 12px;
-      color: #6f6f6f;
-    }
-    .bottom-nav .item.active {
-      font-weight: bold;
-      color: #282828;
-    }
-    .center-btn {
-      background: #FF5959;
-      border-radius: 50%;
+    .profile-pic {
+      position: absolute;
+      bottom: -24px;
+      left: 16px;
       width: 60px;
       height: 60px;
+      border-radius: 50%;
+      border: 3px solid white;
+      overflow: hidden;
+    }
+    .info-section {
+      padding: 40px 16px 16px;
+    }
+    .info-section small {
+      color: #555;
+    }
+    .main-tabs {
+      background: #fff;
+      border-radius: 30px;
+      padding: 8px;
+      margin: 10px 16px;
+      display: flex;
+      justify-content: space-around;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    .tab-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-weight: 500;
+      color: #666;
+      position: relative;
+    }
+    .tab-btn.active {
+      font-weight: 700;
+      color: #000;
+    }
+    .tab-btn.active::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 4px;
+      background-color: red;
+      border-radius: 99px;
+    }
+    .subtabs {
       display: flex;
       justify-content: center;
-      align-items: center;
-      margin-top: -30px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      gap: 8px;
+      padding: 12px 0;
     }
-    .center-btn i {
-      color: white;
-      font-size: 24px;
+    .subtabs .btn {
+      border-radius: 999px;
+      font-size: 13px;
+      padding: 6px 18px;
+      white-space: nowrap;
+      background: #fff;
+      border: 1px solid #ccc;
+      font-weight: 500;
+    }
+    .subtabs .btn.active {
+      background-color: #f1f1f1;
+      color: #000;
+      border-color: #000;
     }
   </style>
 </head>
 <body>
-  <div class="container mt-3">
-    <div class="d-flex align-items-center mb-2">
-      <i class="bi bi-geo-alt-fill me-2"></i>
-      <div>Aarhus N, Strandvangsvej</div>
-    </div>
-
-    <div class="position-relative">
-      <img src="https://d28ku8nzmkcjr6.cloudfront.net/cache/23/f8/23f81d25575a8fd7ddae67d6f62936de.webp" class="img-fluid rounded-3">
-      <button class="btn btn-light position-absolute top-0 end-0 m-2 shadow-sm rounded-pill fw-bold">
-        <i class="bi bi-heart-fill text-info me-1"></i> Følg os
-      </button>
-      <div class="profile-logo">
-        <div class="active-indicator"></div>
+  <div class="app-container">
+    <div class="profile-header">
+      <img src="https://source.unsplash.com/390x160/?store" class="profile-img">
+      <div class="follow-badge"><i class="bi bi-heart"></i> Følg os</div>
+      <div class="profile-pic">
+        <img src="https://source.unsplash.com/60x60/?logo" class="img-fluid">
       </div>
     </div>
-
-    <div class="d-flex justify-content-end gap-3 mt-3">
-      <i class="bi bi-chat-dots bg-light rounded-circle p-2 text-info shadow-sm"></i>
-      <i class="bi bi-bell bg-light rounded-circle p-2 text-info shadow-sm"></i>
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" checked>
-      </div>
-    </div>
-
-    <div class="mt-4 position-relative">
-      <ul class="nav nav-tabs justify-content-center border-0 gap-5">
-        <li class="nav-item">
-          <a class="nav-link active fw-bold" data-bs-toggle="tab" href="#tilbud">Tilbud</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-bold" data-bs-toggle="tab" href="#omos">Om os</a>
-        </li>
-      </ul>
-      <div class="tab-indicator"></div>
-    </div>
-
-    <div class="d-flex justify-content-center gap-2 mt-4">
-      <button class="btn btn-outline-info rounded-pill px-3">Nyeste</button>
-      <button class="btn btn-light rounded-pill px-3">Sidste chance</button>
-      <button class="btn btn-light rounded-pill px-3">Black Friday</button>
-    </div>
-
-    <div class="tab-content mt-4">
-      <div class="tab-pane fade show active" id="tilbud">
-        <div class="row row-cols-2 row-cols-md-3 g-3">
-          <!-- Tilbudskort genereres her -->
-        </div>
-      </div>
-
-      <div class="tab-pane fade" id="omos">
-        <div class="mt-3">
-          <h5 class="fw-bold">Om Matas</h5>
-          <p class="text-muted">Matas tilbyder et bredt udvalg af skønheds- og sundhedsprodukter. Her finder du tilbud, medlemsfordele og nyheder i butikken.</p>
+    <div class="info-section">
+      <h6 class="fw-bold">Adidas, Aarhus</h6>
+      <small><i class="bi bi-geo-alt"></i> Aarhus, Dronning vej 29<br>
+        <i class="bi bi-telephone"></i> +45 88 88 88 88<br>
+        <i class="bi bi-globe"></i> <a href="#" class="text-primary">www.adidas.com</a>
+      </small>
+      <p class="mt-2 small text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <div class="d-flex align-items-center gap-3 mt-2">
+        <i class="bi bi-bell fs-5 position-relative">
+          <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
+        </i>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch">
         </div>
       </div>
     </div>
+    <!-- HOVEDTABS -->
+<div class="main-tabs">
+  <button class="tab-btn active" onclick="switchMainTab('tilbud', this)">Tilbud</button>
+  <button class="tab-btn" onclick="switchMainTab('omos', this)">Om os</button>
+</div>
+
+<!-- INDHOLDSTABS -->
+<div id="tilbud" class="tab-pane">
+  <div id="subtabs-tilbud" class="subtabs">
+    <button class="btn active" onclick="switchSubtab('tilbud-nyeste', this)">Nyeste</button>
+    <button class="btn" onclick="switchSubtab('tilbud-sidste', this)">Sidste chance</button>
+    <button class="btn" onclick="switchSubtab('tilbud-black', this)">Black Friday</button>
   </div>
 
-  <div class="bottom-nav">
-    <div class="item"><i class="bi bi-house"></i><br>Hjem</div>
-    <div class="item"><i class="bi bi-qr-code-scan"></i><br>Scan</div>
-    <div class="center-btn"><i class="bi bi-search"></i></div>
-    <div class="item active"><i class="bi bi-wallet2"></i><br>Wallet</div>
-    <div class="item"><i class="bi bi-list"></i><br>Menu</div>
-  </div>
-
-  <template id="deal-template">
-    <div class="col">
-      <div class="card shadow-sm rounded-3">
-        <div class="position-relative" style="height: 120px; background-size: cover; background-position: center; background-image: url('https://play-lh.googleusercontent.com/9IofQ08dhyYfST9ufTBaJup3srR5Tzc9-zNltER4Wi2cCwgR8rDcbhLRE3GrGJeAofS8=w600-h300-pc0xffffff-pd')">
-          <span class="position-absolute top-0 start-0 bg-white bg-opacity-75 text-dark fw-bold px-2 py-1 m-1 rounded-pill small">S Label</span>
-          <span class="position-absolute top-0 end-0 bg-light rounded-circle p-1 m-1"><i class="bi bi-heart text-info"></i></span>
+  <!-- NYESTE -->
+  <div id="tilbud-nyeste">
+    <h6 class="fw-bold px-3 mt-3">Nyeste</h6>
+    <div class="d-flex overflow-auto gap-3 px-3 pb-3">
+      <!-- Deal kort -->
+      <div class="position-relative card border-0 shadow-sm flex-shrink-0"
+           style="width: 181px; height: 140px; border-radius: 12px; overflow: hidden;">
+        <img src="https://placehold.co/181x100" alt="Deal 1" style="width: 100%; height: 100px; object-fit: cover;">
+        <div class="position-absolute" style="top: 8px; left: 8px;">
+          <div class="bg-white bg-opacity-75 px-2 py-1 rounded-pill shadow-sm"
+               style="font-size: 10px; font-weight: 700; border: 1px solid white; color: #535353;">
+            5+ tilbage
+          </div>
         </div>
-        <div class="card-body py-2 px-2">
-          <h6 class="card-title mb-1">Nike Sko v 32 Air</h6>
-          <div class="d-flex justify-content-between small">
-            <span class="text-muted">04.04: 20.00</span>
-            <span class="fw-bold text-success">40%</span>
+        <div class="position-absolute" style="top: 6px; right: 6px;">
+          <div class="bg-white rounded-circle d-flex align-items-center justify-content-center heart-btn"
+               style="width: 16px; height: 16px; cursor: pointer;">
+            <i class="bi bi-heart" style="font-size: 10px;"></i>
+          </div>
+        </div>
+        <div class="bg-white position-absolute bottom-0 start-0 end-0 d-flex flex-column justify-content-center"
+             style="height: 40px; padding: 4px 8px; gap: 4px; border-bottom-left-radius: 9px; border-bottom-right-radius: 9px;">
+          <div class="fw-bold text-dark" style="font-size: 11px;">Nike Sko</div>
+          <div class="d-flex justify-content-between text-dark" style="font-size: 9px;">
+            <div class="d-flex align-items-center gap-1"><i class="bi bi-geo-alt-fill"></i> KBH</div>
+            <div class="text-success fw-bold"><i class="bi bi-percent"></i> 20%</div>
           </div>
         </div>
       </div>
     </div>
-  </template>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const indicator = document.querySelector('.tab-indicator');
-      const moveIndicator = () => {
-        const activeTab = document.querySelector('.nav-link.active');
-        if (!activeTab) return;
-        const rect = activeTab.getBoundingClientRect();
-        const parentRect = activeTab.closest('.nav-tabs').getBoundingClientRect();
-        indicator.style.width = `${rect.width}px`;
-        indicator.style.left = `${rect.left - parentRect.left}px`;
-      };
-      document.querySelectorAll('.nav-link').forEach(tab => {
-        tab.addEventListener('shown.bs.tab', moveIndicator);
-      });
-      moveIndicator();
-      window.addEventListener('resize', moveIndicator);
+  <!-- SIDSTE CHANCE -->
+  <div id="tilbud-sidste" style="display: none;">
+    <h6 class="fw-bold px-3 mt-3">Sidste chance</h6>
+    <div class="d-flex overflow-auto gap-3 px-3 pb-3">
+      <div class="position-relative card border-0 shadow-sm flex-shrink-0"
+           style="width: 181px; height: 140px; border-radius: 12px; overflow: hidden;">
+        <img src="https://placehold.co/181x100" alt="Deal 2" style="width: 100%; height: 100px; object-fit: cover;">
+        <div class="position-absolute" style="top: 8px; left: 8px;">
+          <div class="bg-white bg-opacity-75 px-2 py-1 rounded-pill shadow-sm"
+               style="font-size: 10px; font-weight: 700; border: 1px solid white; color: #535353;">
+            5+ tilbage
+          </div>
+        </div>
+        <div class="position-absolute" style="top: 6px; right: 6px;">
+          <div class="bg-white rounded-circle d-flex align-items-center justify-content-center heart-btn"
+               style="width: 16px; height: 16px; cursor: pointer;">
+            <i class="bi bi-heart" style="font-size: 10px;"></i>
+          </div>
+        </div>
+        <div class="bg-white position-absolute bottom-0 start-0 end-0 d-flex flex-column justify-content-center"
+             style="height: 40px; padding: 4px 8px; gap: 4px; border-bottom-left-radius: 9px; border-bottom-right-radius: 9px;">
+          <div class="fw-bold text-dark" style="font-size: 11px;">Frisør Deal</div>
+          <div class="d-flex justify-content-between text-dark" style="font-size: 9px;">
+            <div class="d-flex align-items-center gap-1"><i class="bi bi-geo-alt-fill"></i> Odense</div>
+            <div class="text-success fw-bold"><i class="bi bi-percent"></i> 30%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      // Tilbudskort-generator
-      const container = document.querySelector('.tab-pane#tilbud .row');
-      const template = document.getElementById('deal-template');
-      for (let i = 0; i < 12; i++) {
-        container.appendChild(template.content.cloneNode(true));
-      }
+  <!-- BLACK FRIDAY -->
+  <div id="tilbud-black" style="display: none;">
+    <h6 class="fw-bold px-3 mt-3">Black Friday</h6>
+    <div class="d-flex overflow-auto px-3 gap-2 pb-3 coupon-scroll" style="scroll-snap-type: x mandatory;">
+      <div class="card position-relative border-0 shadow-sm flex-shrink-0 d-flex flex-column justify-content-between"
+           style="width: 331px; height: 135px; border-radius: 12px; overflow: hidden; scroll-snap-align: start;">
+        <img src="https://placehold.co/331x135" class="w-100 h-100" style="object-fit: cover;" alt="Nike sko" />
+        <div class="position-absolute" style="top: 8px; left: 8px;">
+          <div class="bg-white bg-opacity-75 px-2 py-1 rounded-pill shadow-sm"
+               style="font-size: 10px; font-weight: 700; border: 1px solid white; color: #535353;">
+            5+ tilbage
+          </div>
+        </div>
+        <div class="position-absolute" style="top: 8px; right: 8px;">
+          <div class="bg-white rounded-circle d-flex align-items-center justify-content-center heart-btn"
+               style="width: 16px; height: 16px; cursor: pointer;">
+            <i class="bi bi-heart" style="font-size: 10px;"></i>
+          </div>
+        </div>
+        <div class="position-absolute bottom-0 start-0 end-0 bg-white px-2 py-2"
+             style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
+          <div class="fw-bold text-dark" style="font-size: 11px;">Nike Sko v 32 Air – Aarhus N</div>
+          <div class="d-flex justify-content-between align-items-center flex-wrap mt-1" style="font-size: 10px;">
+            <div class="d-flex align-items-center gap-1"><i class="bi bi-geo-alt-fill"></i> Kbg</div>
+            <div class="d-flex align-items-center gap-1"><i class="bi bi-shop"></i> Adidas</div>
+            <div class="d-flex align-items-center gap-1"><i class="bi bi-clock"></i> 04.04: 20.00</div>
+            <div class="d-flex align-items-center gap-1 text-success fw-bold"><i class="bi bi-percent"></i> 40%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+    <div id="omos" class="tab-pane d-none">
+      <div class="subtabs">
+        <button class="btn active">News feed</button>
+        <button class="btn">Galleri</button>
+        <button class="btn">Om os</button>
+      </div>
+      <div id="omos" class="tab-pane d-none">
+  <!-- Undertabs -->
+  <div class="subtabs" id="subtabs-omos">
+    <button class="btn active" onclick="switchOmosTab('omos-newsfeed', this)">News feed</button>
+    <button class="btn" onclick="switchOmosTab('omos-gallery', this)">Galleri</button>
+    <button class="btn" onclick="switchOmosTab('omos-about', this)">Om os</button>
+  </div>
+
+  <!-- News feed -->
+  <div id="omos-newsfeed">
+    <!-- OM OS: News feed -->
+<div id="omos-newsfeed" class="pt-3 px-3">
+  <!-- Opslag -->
+  <div class="card border-0 mb-4 shadow-sm rounded-4">
+    <!-- Header -->
+    <div class="d-flex align-items-center p-3">
+      <img src="https://source.unsplash.com/40x40/?profile" class="rounded-circle me-2" width="40" height="40" />
+      <div>
+        <div class="fw-bold small">Adidas</div>
+        <div class="text-muted" style="font-size: 12px;">Aarhus Syd</div>
+      </div>
+      <div class="ms-auto">
+        <i class="bi bi-three-dots"></i>
+      </div>
+    </div>
+
+    <!-- Billed-scroll -->
+    <div class="d-flex overflow-auto gap-2 px-3 pb-2">
+      <img src="https://source.unsplash.com/300x200/?tennis" class="rounded-3" style="height: 180px; flex: 0 0 auto;" />
+      <img src="https://source.unsplash.com/301x200/?tennis" class="rounded-3" style="height: 180px; flex: 0 0 auto;" />
+      <img src="https://source.unsplash.com/302x200/?tennis" class="rounded-3" style="height: 180px; flex: 0 0 auto;" />
+    </div>
+
+    <!-- Interaktion -->
+    <div class="px-3 d-flex justify-content-between text-muted small pb-2">
+      <div class="d-flex gap-3">
+        <i class="bi bi-heart"></i>
+        <i class="bi bi-chat-dots"></i>
+        <i class="bi bi-send"></i>
+      </div>
+      <i class="bi bi-bookmark"></i>
+    </div>
+
+    <!-- Tekst -->
+    <div class="px-3 pb-3 small">
+      <strong>Adidas</strong> Streamline Your Workday, Elevate Your Life.  
+      <div class="text-primary">#Tennis</div>
+      <div class="text-muted">21 November</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <!-- Galleri -->
+  <div id="omos-gallery" style="display: none;">
+    <p class="px-3 text-muted">📸 Galleri kommer snart...</p>
+  </div>
+
+  <!-- Om os -->
+  <div id="omos-about" style="display: none;">
+    <p class="px-3 text-muted">ℹ️ Information om butikken...</p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // HOVEDTABS
+  function switchMainTab(tabId, button) {
+    // Fjern aktiv klasse
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    // Skjul begge hovedsektioner
+    document.getElementById('tilbud').classList.add('d-none');
+    document.getElementById('omos').classList.add('d-none');
+
+    // Vis den valgte hovedsektion
+    document.getElementById(tabId).classList.remove('d-none');
+
+    // Vis/Skjul undertabs hvis det er "Tilbud"
+    const subtabs = document.getElementById('subtabs-tilbud');
+    if (tabId === 'tilbud') {
+      subtabs.style.display = 'flex';
+    } else {
+      subtabs.style.display = 'none';
+    }
+  }
+
+  // UNDERTABS
+  function switchSubtab(subId, button) {
+    // Fjern aktiv klasse
+    document.querySelectorAll('#subtabs-tilbud .btn').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    // Skjul alle undersektioner
+    ['tilbud-nyeste', 'tilbud-sidste', 'tilbud-black'].forEach(id => {
+      document.getElementById(id).style.display = 'none';
     });
-  </script>
+
+    // Vis den valgte undersektion
+    document.getElementById(subId).style.display = 'block';
+  }
+
+  // Skjul "Om os" fra start
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('omos').classList.add('d-none');
+  });
+</script>
 </body>
 </html>
+
+
+
