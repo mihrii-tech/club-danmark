@@ -3,70 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ClubDanmark Overlay</title>
+  <title>ClubDanmark Search Overlay</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <style>
-    body { background-color: #fff; margin-bottom: 70px; }
-    .bottom-nav {
-      position: fixed; bottom: 0; left: 0; width: 100%; background: white; border-top: 1px solid #ccc;
-      display: flex; justify-content: space-around; padding: 10px 0; z-index: 1040;
-    }
-    .overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: white; padding: 20px; z-index: 1050;
-      display: none; flex-direction: column; overflow-y: auto;
-    }
-    .search-container { position: relative; margin-bottom: 20px; }
-    .search-container input { border-radius: 25px; padding-left: 40px; padding-right: 40px; }
-    .search-container .bi-search { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #888; }
-    .search-container .bi-mic-fill { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #888; }
-    .search-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-    .search-options div { text-align: center; }
-    .search-options img { width: 50px; height: 50px; }
-  </style>
 </head>
-<body>
+<body class="bg-light">
 
-<!-- Bundnavigation -->
-<div class="bottom-nav">
-  <i class="bi bi-house fs-4"></i>
-  <i class="bi bi-people fs-4"></i>
-  <i class="bi bi-search fs-4" onclick="openOverlay()"></i> <!-- Klik for at åbne overlay -->
-  <i class="bi bi-person fs-4"></i>
-</div>
+  <!-- Bottom nav -->
+  <div class="position-fixed bottom-0 start-50 translate-middle-x w-100 d-flex justify-content-around bg-white border-top py-2" style="max-width: 390px; z-index: 1040;">
+    <i class="bi bi-house fs-4"></i>
+    <i class="bi bi-search fs-4" id="openSearchOverlay" style="cursor: pointer;"></i>
+    <i class="bi bi-plus-circle fs-4"></i>
+    <i class="bi bi-person fs-4"></i>
+  </div>
 
-<!-- Overlay (søgefelt + ikoner) -->
-<div id="searchOverlay" class="overlay">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h5>Search</h5>
-    <button onclick="closeOverlay()" class="btn-close"></button>
-  </div>
-  <div class="search-container">
-    <i class="bi bi-search"></i>
-    <input type="text" class="form-control" placeholder="Place holder">
-    <i class="bi bi-mic-fill"></i>
-  </div>
-  <div class="search-options">
-    <div><img src="indkob.png" alt=""><p>Indkøb</p></div>
-    <div><img src="madspild.png" alt=""><p>Madspild</p></div>
-    <div><img src="sport.png" alt=""><p>Sport</p></div>
-    <div><img src="fritid.png" alt=""><p>Fritid</p></div>
-    <div><img src="skonhed.png" alt=""><p>Skønhed</p></div>
-    <div><img src="gaver.png" alt=""><p>Gaver</p></div>
-    <div><img src="bogrom.png" alt=""><p>Bogrom</p></div>
-    <div><img src="gaming.png" alt=""><p>Gaming</p></div>
-  </div>
-</div>
+ <div id="searchOverlay" class="position-fixed top-0 start-0 w-100 h-100 d-none justify-content-center align-items-end bg-dark bg-opacity-50" style="z-index: 1050;">
+  <div class="bg-white rounded-top-5 shadow w-100 px-4 pt-4 pb-3 position-relative" style="max-width: 402px;">
 
-<script>
-  function openOverlay() {
-    document.getElementById("searchOverlay").style.display = "flex";
-  }
-  function closeOverlay() {
-    document.getElementById("searchOverlay").style.display = "none";
-  }
-</script>
+    <!-- Close Button -->
+    <button type="button" class="btn position-absolute top-0 end-0 m-3 p-0 border-0" id="closeSearchOverlay">
+      <i class="bi bi-x-lg fs-5 text-danger"></i>
+    </button>
+
+    <!-- Search Field (med ekstra margin-top) -->
+    <div class="position-relative mb-4" style="margin-top: 20px;"> <!-- Tilføjet margin-top -->
+      <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+      <input type="text" class="form-control rounded-pill ps-5 pe-5" placeholder="Place holder">
+      <i class="bi bi-mic-fill position-absolute top-50 end-0 translate-middle-y me-3 text-muted"></i>
+    </div>
+
+    <!-- Search Options -->
+    <div class="row row-cols-4 g-3">
+      <div class="col text-center"><img src="indkob.png" width="50"><p class="small mb-0">Indkøb</p></div>
+      <div class="col text-center"><img src="madspild.png" width="50"><p class="small mb-0">Madspild</p></div>
+      <div class="col text-center"><img src="sport.png" width="50"><p class="small mb-0">Sport</p></div>
+      <div class="col text-center"><img src="fritid.png" width="50"><p class="small mb-0">Fritid</p></div>
+      <div class="col text-center"><img src="skonhed.png" width="50"><p class="small mb-0">Skønhed</p></div>
+      <div class="col text-center"><img src="gaver.png" width="50"><p class="small mb-0">Gaver</p></div>
+      <div class="col text-center"><img src="bogrom.png" width="50"><p class="small mb-0">Bogrom</p></div>
+      <div class="col text-center"><img src="gaming.png" width="50"><p class="small mb-0">Gaming</p></div>
+    </div>
+
+    </div>
+  </div>
+
+  <!-- JS til åbning/lukning -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const openSearchOverlay = document.getElementById('openSearchOverlay');
+      const searchOverlay = document.getElementById('searchOverlay');
+      const closeSearchOverlay = document.getElementById('closeSearchOverlay');
+
+      if (openSearchOverlay && searchOverlay && closeSearchOverlay) {
+        openSearchOverlay.addEventListener('click', () => {
+          searchOverlay.classList.remove('d-none');
+          searchOverlay.classList.add('d-flex');
+        });
+        closeSearchOverlay.addEventListener('click', () => {
+          searchOverlay.classList.remove('d-flex');
+          searchOverlay.classList.add('d-none');
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
