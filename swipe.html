@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swipe Rabat Kode – Perfekt Figma Version</title>
+  <style>
+    body {
+      background-color: #F1F3F7;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .rabatkort {
+      width: 340px;
+      height: 400px;
+      background: #FFFFFF;
+      border-radius: 20px;
+      box-shadow: 0px 19px 47px -8px rgba(0,0,0,0.25);
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+      position: relative;
+    }
+
+    .ikon {
+      width: 100px;
+      height: 100px;
+      background-color: #D8D8D8;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    .ikon svg {
+      width: 50px;
+      height: 50px;
+      stroke: white;
+      stroke-width: 4;
+      fill: none;
+    }
+
+    h3 {
+      color: #F9A825;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #777;
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 30px;
+    }
+
+    .swipe-container {
+      width: 263px;
+      height: 58px;
+      background-color: #E3E3E4;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      display: flex;
+      justify-content: center; 
+      align-items: center;
+      position: absolute;
+      left: 41px;  
+      top: 306px;   
+    }
+
+    .content-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px; 
+    }
+
+    .pilcirkel {
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+.pil-svg {
+  width: 12px;  
+  height: 12px;
+}
+    .pil {
+      width: 3.5px;
+      height: 6.5px;
+      border-right: 1.5px solid black;
+      border-bottom: 1.5px solid black;
+      transform: rotate(45deg);
+      
+    }
+
+    .swipe-text {
+      font-weight: 700;
+      color: black;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+<div class="rabatkort">
+  <div>
+    <div class="ikon">
+      <svg viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+    </div>
+    <h3>Swipe rabat kode</h3>
+    <p>Lad kun butikkens ansatte swipe din rabatkode – ellers kan rabatten blive afvist.</p>
+  </div>
+<div class="swipe-container">
+  <div class="content-wrapper">
+    <div class="pilcirkel">
+      <svg class="pil-svg" viewBox="0 0 24 24">
+        <polyline points="8 4 16 12 8 20" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+    <div class="swipe-text">Swipe for at indløse</div>
+  </div>
+</div>
+
+<script>
+  const pilcirkel = document.getElementById('pilcirkel');
+  const swipeContainer = document.getElementById('swipeContainer');
+  const swipeText = document.getElementById('swipeText');
+
+  let isDragging = false;
+  let startX = 0;
+
+  pilcirkel.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX - pilcirkel.offsetLeft;
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    let deltaX = e.clientX - startX;
+    const maxMove = swipeContainer.clientWidth - pilcirkel.clientWidth;
+    deltaX = Math.max(0, Math.min(maxMove, deltaX));
+    pilcirkel.style.transform = `translateX(${deltaX}px)`;
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    const transformX = parseInt(pilcirkel.style.transform.replace(/translateX\(|px\)/g, '')) || 0;
+    const maxMove = swipeContainer.clientWidth - pilcirkel.clientWidth;
+    if (transformX >= maxMove - 10) {
+      swipeContainer.classList.add('swiped');
+      swipeText.textContent = 'Rabatkode indløst!';
+      pilcirkel.style.transform = `translateX(${maxMove}px)`;
+    } else {
+      pilcirkel.style.transform = `translateX(0px)`;
+    }
+  });
+
+  // Touch support
+  pilcirkel.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    startX = e.touches[0].clientX - (parseInt(pilcirkel.style.transform.replace(/translateX\(|px\)/g, '')) || 0);
+  });
+
+  document.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    let deltaX = e.touches[0].clientX - startX;
+    const maxMove = swipeContainer.clientWidth - pilcirkel.clientWidth;
+    deltaX = Math.max(0, Math.min(maxMove, deltaX));
+    pilcirkel.style.transform = `translateX(${deltaX}px)`;
+    e.preventDefault();
+  }, { passive: false });
+
+  document.addEventListener('touchend', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    const transformX = parseInt(pilcirkel.style.transform.replace(/translateX\(|px\)/g, '')) || 0;
+    const maxMove = swipeContainer.clientWidth - pilcirkel.clientWidth;
+    if (transformX >= maxMove - 10) {
+      swipeContainer.classList.add('swiped');
+      swipeText.textContent = 'Rabatkode indløst!';
+      pilcirkel.style.transform = `translateX(${maxMove}px)`;
+    } else {
+      pilcirkel.style.transform = `translateX(0px)`;
+    }
+  });
+</script>
+
+</body>
+</html>
+
+
+
