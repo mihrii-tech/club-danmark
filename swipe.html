@@ -136,72 +136,43 @@
 </div>
 
 <script>
-  const pilcirkel = document.getElementById('pilcirkel');
-  const swipeContainer = document.getElementById('swipeContainer');
-  const swipeText = document.getElementById('swipeText');
+  function animateSwipe(element, targetX) {
+  let startX = parseInt(element.style.transform.replace(/translateX\(|px\)/g, '')) || 0;
+  let distance = targetX - startX;
+  let duration = 300; // Animationstid i ms
+  let startTime = null;
 
-  let isDragging = false;
-  let startX = 0;
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    let progress = timestamp - startTime;
+    let percent = Math.min(progress / duration, 1);
+    let currentX = startX + distance * percent;
+    element.style.transform = `translateX(${currentX}px)`;
 
-  pilcirkel.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startX = e.clientX - pilcirkel.offsetLeft;
-  });
-
-  document.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    let deltaX = e.clientX - startX;
-    const maxMove = swipeContainer.clientWidth - pilcirkel.clientWidth;
-    deltaX = Math.max(0, Math.min(maxMove, deltaX));
-    pilcirkel.style.transform = `translateX(${deltaX}px)`;
-  });
-
-  document.addEventListener('mouseup', () => {
-    if (!isDragging) return;
-    isDragging = false;
-    const transformX = parseInt(pilcirkel.style.transform.replace(/translateX\(|px\)/g, '')) || 0;
-    const maxMove = swipeContainer.clientWidth - pilcirkel.clientWidth;
-    if (transformX >= maxMove - 10) {
-      swipeContainer.classList.add('swiped');
-      swipeText.textContent = 'Rabatkode indløst!';
-      pilcirkel.style.transform = `translateX(${maxMove}px)`;
-    } else {
-      pilcirkel.style.transform = `translateX(0px)`;
+    if (percent < 1) {
+      requestAnimationFrame(step);
     }
-  });
+  }
 
-  // Touch support
-  pilcirkel.addEventListener('touchstart', (e) => {
-    isDragging = true;
-    startX = e.touches[0].clientX - (parseInt(pilcirkel.style.transform.replace(/translateX\(|px\)/g, '')) || 0);
-  });
+  requestAnimationFrame(step);
+}
 
-  document.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    let deltaX = e.touches[0].clientX - startX;
-    const maxMove = swipeContainer.clientWidth - pilcirkel.clientWidth;
-    deltaX = Math.max(0, Math.min(maxMove, deltaX));
-    pilcirkel.style.transform = `translateX(${deltaX}px)`;
-    e.preventDefault();
-  }, { passive: false });
+// Brug funktionen, når brugeren slipper swipe
+document.addEventListener('mouseup', () => {
+  if (!isDragging) return;
+  isDragging = false;
+  const transformX = parseInt(pilcirkel.style.transform.replace(/translateX\(|px\)/g, '')) || 0;
+  const maxMove = swipeContainer.clientWidth - pilcirkel.clientWidth;
 
-  document.addEventListener('touchend', () => {
-    if (!isDragging) return;
-    isDragging = false;
-    const transformX = parseInt(pilcirkel.style.transform.replace(/translateX\(|px\)/g, '')) || 0;
-    const maxMove = swipeContainer.clientWidth - pilcirkel.clientWidth;
-    if (transformX >= maxMove - 10) {
-      swipeContainer.classList.add('swiped');
-      swipeText.textContent = 'Rabatkode indløst!';
-      pilcirkel.style.transform = `translateX(${maxMove}px)`;
-    } else {
-      pilcirkel.style.transform = `translateX(0px)`;
-    }
-  });
+  if (transformX >= maxMove - 10) {
+    swipeContainer.classList.add('swiped');
+    swipeText.textContent = 'Rabatkode indløst!';
+    animateSwipe(pilcirkel, maxMove);
+  } else {
+    animateSwipe(pilcirkel, 0);
+  }
+});
 </script>
 
-</body>
-</html>
-
-
-
+</body> 
+ </html>
