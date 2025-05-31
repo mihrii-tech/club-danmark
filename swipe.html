@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Swipe Rabat Kode – Perfekt Figma Version</title>
+  <title>Swipe Animation</title>
+  <link rel="stylesheet" href="styles.css">
   <style>
     body {
       background-color: #F1F3F7;
@@ -91,6 +92,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: transform 0.3s ease-out;
     }
 .pil-svg {
   width: 12px;  
@@ -125,39 +127,36 @@
     <p>Lad kun butikkens ansatte swipe din rabatkode – ellers kan rabatten blive afvist.</p>
   </div>
 <div class="swipe-container">
-  <div class="content-wrapper">
-    <div class="pilcirkel">
-      <svg class="pil-svg" viewBox="0 0 24 24">
-        <polyline points="8 4 16 12 8 20" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </div>
-    <div class="swipe-text">Swipe for at indløse</div>
+  <div class="pilcirkel">
+    <svg class="pil-svg" viewBox="0 0 24 24">
+      <polyline points="8 4 16 12 8 20" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="swipe-text">Swipe for at indløse</div>
   </div>
 </div>
 
 <script>
-  function animateSwipe(element, targetX) {
-  let startX = parseInt(element.style.transform.replace(/translateX\(|px\)/g, '')) || 0;
-  let distance = targetX - startX;
-  let duration = 300; // Animationstid i ms
-  let startTime = null;
+const pilcirkel = document.querySelector('.pilcirkel');
+const swipeContainer = document.querySelector('.swipe-container');
+const swipeText = document.querySelector('.swipe-text');
 
-  function step(timestamp) {
-    if (!startTime) startTime = timestamp;
-    let progress = timestamp - startTime;
-    let percent = Math.min(progress / duration, 1);
-    let currentX = startX + distance * percent;
-    element.style.transform = `translateX(${currentX}px)`;
+let isDragging = false;
+let startX = 0;
 
-    if (percent < 1) {
-      requestAnimationFrame(step);
-    }
-  }
+pilcirkel.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  startX = e.clientX - pilcirkel.offsetLeft;
+});
 
-  requestAnimationFrame(step);
-}
+document.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  let deltaX = e.clientX - startX;
+  const maxMove = swipeContainer.clientWidth - pilcirkel.clientWidth;
+  deltaX = Math.max(0, Math.min(maxMove, deltaX));
+  pilcirkel.style.transform = `translateX(${deltaX}px)`;
+});
 
-// Brug funktionen, når brugeren slipper swipe
 document.addEventListener('mouseup', () => {
   if (!isDragging) return;
   isDragging = false;
@@ -167,9 +166,9 @@ document.addEventListener('mouseup', () => {
   if (transformX >= maxMove - 10) {
     swipeContainer.classList.add('swiped');
     swipeText.textContent = 'Rabatkode indløst!';
-    animateSwipe(pilcirkel, maxMove);
+    pilcirkel.style.transform = `translateX(${maxMove}px)`;
   } else {
-    animateSwipe(pilcirkel, 0);
+    pilcirkel.style.transform = `translateX(0px)`;
   }
 });
 </script>
