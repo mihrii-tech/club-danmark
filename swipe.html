@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Swipe Animation</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Rabat Kode – Knap Version</title>
   <style>
     body {
       background-color: #F1F3F7;
@@ -64,53 +63,16 @@
       margin-bottom: 30px;
     }
 
-    .swipe-container {
-      width: 263px;
-      height: 58px;
-      background-color: #E3E3E4;
+    .indlos-knap {
+      background-color: #F9A825;
+      color: white;
+      padding: 15px 20px;
+      font-size: 1rem;
+      border: none;
       border-radius: 28px;
-      border: 1px solid rgba(255, 255, 255, 0.72);
-      display: flex;
-      justify-content: center; 
-      align-items: center;
-      position: absolute;
-      left: 41px;  
-      top: 306px;   
-    }
-
-    .content-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 10px; 
-    }
-
-    .pilcirkel {
-      width: 40px;
-      height: 40px;
-      background-color: white;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: transform 0.3s ease-out;
-    }
-.pil-svg {
-  width: 12px;  
-  height: 12px;
-}
-    .pil {
-      width: 3.5px;
-      height: 6.5px;
-      border-right: 1.5px solid black;
-      border-bottom: 1.5px solid black;
-      transform: rotate(45deg);
-      
-    }
-
-    .swipe-text {
-      font-weight: 700;
-      color: black;
-      white-space: nowrap;
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
     }
   </style>
 </head>
@@ -123,55 +85,21 @@
         <polyline points="20 6 9 17 4 12" />
       </svg>
     </div>
-    <h3>Swipe rabat kode</h3>
-    <p>Lad kun butikkens ansatte swipe din rabatkode – ellers kan rabatten blive afvist.</p>
+    <h3>Indløs rabatkode</h3>
+    <p>Lad kun butikkens ansatte trykke på knappen – ellers kan rabatten blive afvist.</p>
   </div>
-<div class="swipe-container">
-  <div class="pilcirkel">
-    <svg class="pil-svg" viewBox="0 0 24 24">
-      <polyline points="8 4 16 12 8 20" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </div>
-  <div class="swipe-text">Swipe for at indløse</div>
-  </div>
+
+  <!-- Knap til popup -->
+  <button class="indlos-knap" onclick="openPopup()">Indløs rabatkode</button>
 </div>
 
 <script>
-const pilcirkel = document.querySelector('.pilcirkel');
-const swipeContainer = document.querySelector('.swipe-container');
-const swipeText = document.querySelector('.swipe-text');
-
-let isDragging = false;
-let startX = 0;
-
-pilcirkel.addEventListener('mousedown', (e) => {
-  isDragging = true;
-  startX = e.clientX - pilcirkel.offsetLeft;
-});
-
-document.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
-  let deltaX = e.clientX - startX;
-  const maxMove = swipeContainer.clientWidth - pilcirkel.clientWidth;
-  deltaX = Math.max(0, Math.min(maxMove, deltaX));
-  pilcirkel.style.transform = `translateX(${deltaX}px)`;
-});
-
-document.addEventListener('mouseup', () => {
-  if (!isDragging) return;
-  isDragging = false;
-  const transformX = parseInt(pilcirkel.style.transform.replace(/translateX\(|px\)/g, '')) || 0;
-  const maxMove = swipeContainer.clientWidth - pilcirkel.clientWidth;
-
-  if (transformX >= maxMove - 10) {
-    swipeContainer.classList.add('swiped');
-    swipeText.textContent = 'Rabatkode indløst!';
-    pilcirkel.style.transform = `translateX(${maxMove}px)`;
-  } else {
-    pilcirkel.style.transform = `translateX(0px)`;
-  }
-});
+function openPopup() {
+  alert("Rabatkode indløst!\nVis denne popup til butikken.");
+  // Her kan du evt. kalde backend eller åbne modal
+  // window.location.href = "/backend-url"; // eksempel på redirect
+}
 </script>
 
-</body> 
- </html>
+</body>
+</html>
