@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rabat Kode – Knap med Avanceret Modal</title>
-  <!-- Bootstrap 5 CSS -->
+  <title>Vis rabatkort ved klik</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
       background-color: #F1F3F7;
       font-family: 'Poppins', sans-serif;
+      margin: 0;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      flex-direction: column;
     }
 
     .rabatkort {
@@ -24,11 +24,17 @@
       border-radius: 20px;
       box-shadow: 0px 19px 47px -8px rgba(0,0,0,0.25);
       padding: 30px 20px;
-      display: flex;
+      display: none; /* skjult som udgangspunkt */
       flex-direction: column;
       justify-content: space-between;
       text-align: center;
       position: relative;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .ikon {
@@ -65,7 +71,8 @@
       margin-bottom: 30px;
     }
 
-    .indlos-knap {
+    .indlos-knap,
+    .vis-kort-knap {
       background-color: #F9A825;
       color: white;
       padding: 15px 20px;
@@ -77,16 +84,19 @@
       width: 100%;
     }
 
-    .modal-body img {
-      width: 80px;
-      margin: 10px auto;
-      display: block;
+    .vis-kort-knap {
+      max-width: 300px;
+      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
 
-<div class="rabatkort">
+<!-- Startknap -->
+<button class="vis-kort-knap" onclick="visRabatkort()">Vis rabatkode</button>
+
+<!-- Rabatkort der vises efter klik -->
+<div class="rabatkort" id="rabatkort">
   <div>
     <div class="ikon">
       <svg viewBox="0 0 24 24">
@@ -96,22 +106,20 @@
     <h3>Indløs rabatkode</h3>
     <p>Lad kun butikkens ansatte trykke på knappen – ellers kan rabatten blive afvist.</p>
   </div>
-
-  <!-- Knap til at åbne modal -->
-  <button class="indlos-knap" data-bs-toggle="modal" data-bs-target="#rabatModal" onclick="autoClose()">Indløs rabatkode</button>
+  <button class="indlos-knap" onclick="openModal()">Indløs rabatkode</button>
 </div>
 
-<!-- Bootstrap Modal -->
+<!-- Modal -->
 <div class="modal fade" id="rabatModal" tabindex="-1" aria-labelledby="rabatModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+    <div class="modal-content text-center">
       <div class="modal-header">
-        <h5 class="modal-title" id="rabatModalLabel">Rabatkode indløst!</h5>
+        <h5 class="modal-title w-100" id="rabatModalLabel">Rabatkode indløst!</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Luk"></button>
       </div>
       <div class="modal-body">
-        <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="Tjek ikon">
-        Vis denne popup til butikken for at indløse rabatkoden.
+        <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" width="80" class="mb-3" />
+        Vis denne popup til butikken for at få rabatten.
       </div>
       <div class="modal-footer">
         <a href="/backend-rabat-indlosning" class="btn btn-primary">Gå til rabatkode</a>
@@ -121,17 +129,22 @@
   </div>
 </div>
 
-<!-- Bootstrap 5 JS -->
+<!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-function autoClose() {
-  setTimeout(() => {
-    const modalElement = bootstrap.Modal.getInstance(document.getElementById('rabatModal'));
-    if (modalElement) {
-      modalElement.hide();
-    }
-  }, 5000); // Lukkes automatisk efter 5 sekunder
-}
+  function visRabatkort() {
+    const kort = document.getElementById('rabatkort');
+    kort.style.display = 'flex';
+  }
+
+  function openModal() {
+    const modal = new bootstrap.Modal(document.getElementById('rabatModal'));
+    modal.show();
+    // Automatisk luk efter 5 sekunder
+    setTimeout(() => {
+      modal.hide();
+    }, 5000);
+  }
 </script>
 
 </body>
