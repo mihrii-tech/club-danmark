@@ -17,6 +17,21 @@
       flex-direction: column;
     }
 
+    /* Baggrunds-overlay */
+    .overlay-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1040;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Rabatkort */
     .rabatkort {
       width: 340px;
       height: 400px;
@@ -24,11 +39,11 @@
       border-radius: 20px;
       box-shadow: 0px 19px 47px -8px rgba(0,0,0,0.25);
       padding: 30px 20px;
-      display: none; /* skjult som udgangspunkt */
+      display: flex;
       flex-direction: column;
       justify-content: space-between;
       text-align: center;
-      position: relative;
+      position: absolute;
       animation: fadeIn 0.4s ease-in-out;
     }
 
@@ -95,18 +110,20 @@
 <!-- Startknap -->
 <button class="vis-kort-knap" onclick="visRabatkort()">Vis rabatkode</button>
 
-<!-- Rabatkort der vises efter klik -->
-<div class="rabatkort" id="rabatkort">
-  <div>
-    <div class="ikon">
-      <svg viewBox="0 0 24 24">
-        <polyline points="20 6 9 17 4 12" />
-      </svg>
+<!-- Gråt overlay + rabatkort -->
+<div class="overlay-bg" id="overlay">
+  <div class="rabatkort" id="rabatkort">
+    <div>
+      <div class="ikon">
+        <svg viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+      </div>
+      <h3>Indløs rabatkode</h3>
+      <p>Lad kun butikkens ansatte trykke på knappen – ellers kan rabatten blive afvist.</p>
     </div>
-    <h3>Indløs rabatkode</h3>
-    <p>Lad kun butikkens ansatte trykke på knappen – ellers kan rabatten blive afvist.</p>
+    <button class="indlos-knap" onclick="openModal()">Indløs rabatkode</button>
   </div>
-  <button class="indlos-knap" onclick="openModal()">Indløs rabatkode</button>
 </div>
 
 <!-- Modal -->
@@ -133,8 +150,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   function visRabatkort() {
-    const kort = document.getElementById('rabatkort');
-    kort.style.display = 'flex';
+    const overlay = document.getElementById('overlay');
+    overlay.style.display = 'flex';
   }
 
   function openModal() {
